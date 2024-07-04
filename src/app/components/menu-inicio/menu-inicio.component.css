@@ -1,0 +1,87 @@
+h1,
+h2 {
+    text-align: center;
+}
+
+img {
+    margin-top: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+    height: auto;
+}
+
+.mat-toolbar.mat-primary {
+    /*background: #007bff;*/
+    color: #003770;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.systemName {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+}
+
+.mat-icon {
+    margin-top: -15px;
+    color: aliceblue;
+    font-size: 40px;
+}
+
+.column {
+    text-align: center;
+    margin-top: 20px;
+    width: 300px;
+    min-width: 300px;
+    float: left;
+}
+
+.resaltar:hover {
+    background-color: #003770;
+    color: aliceblue;
+    transition: 0.5s;
+}
+
+.center {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.margen1 {
+    margin-top: -24px;
+}
+
+.cuadrado {
+    width: 32.4%;
+    border-radius: 15px;
+}
+
+.visi {
+    visibility: hidden;
+}
+
+.div-link:hover {
+    cursor: pointer;
+}
+
+.margen {
+    border-left: #c7c8c9 solid;
+}
+
+.bg-box {
+    background: #003975;
+    color: #fff;
+}
+
+.title {
+    color: #003975;
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+}

@@ -1,0 +1,108 @@
+<app-navbar>
+</app-navbar>
+
+<div id="massa-id">
+    <div class="solicitud-heading">
+        <h1>Proposito: Rechazo de solicitud de compra</h1>
+    </div>
+
+    <div class="redactar-rechazo">
+
+        <div class="headline">
+            <h4>Estimado(a): </h4>
+            <p>{{unaSolicitud.responsable}}</p>
+        </div>
+
+        <div class="informe">
+
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Redactar informe</mat-label>
+                <textarea matInput cols="30" rows="5" placeholder="Detalle las razones del rechazo de la solicitud" [(ngModel)]="role" [maxLength]="maxChars" required> </textarea>
+
+                <label> Characteres restantes: {{role.length}}/{{maxChars}}</label>
+            </mat-form-field>
+
+        </div>
+
+        <div class="headline">
+            <h4>Por motivos mencionados se rechaza la solicitud del tipo: </h4>
+            <p>{{unaSolicitud.tipo}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Este informe se guaradara entre los archivos de la unidad: </h4>
+            <p>{{unaSolicitud.unidad_nombre}}</p>
+        </div>
+
+    </div>
+    <div class="solicitud-heading">
+        <h1>Solicitud en detalle</h1>
+    </div>
+    <div class="solicitud-body">
+
+        <div class="headline-left">
+            <h4>Estado: </h4>
+            <p>{{unaSolicitud.estado}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Tipo de solicitud: </h4>
+            <p>{{unaSolicitud.tipo}}</p>
+        </div>
+
+        <div class="headline-left">
+            <h4>Monto estimado: </h4>
+            <p>{{unaSolicitud.montoestimado}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Responsable: </h4>
+            <p>{{unaSolicitud.responsable}}</p>
+        </div>
+
+        <div class="headline-left">
+            <h4>Fecha de emision: </h4>
+            <p>{{unaSolicitud.created_at}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Unidad: </h4>
+            <p>{{unaSolicitud.unidad_nombre}}</p>
+        </div>
+
+    </div>
+
+    <div class="cotizador-info">
+        <div class="headline-left">
+            <h4>Telefono: </h4>
+            <p>4859950</p>
+        </div>
+
+        <div class="headline">
+            <h4>Encargado: </h4>
+            <p>{{cotizador}}</p>
+        </div>
+
+        <div class="headline-left">
+            <h4>Correo: </h4>
+            <p>CENTRO-DE-COTIZACIONES@UMSS.EDU.BO</p>
+        </div>
+
+        <div class="headline">
+            <h4>Rol: </h4>
+            <p>{{rol}}</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="info-sender">
+    <!--mat-raised-button-->
+    <button id="sendinfo" (click)="enviarInforme()" mat-flat-button color="primary">Exportar y guardar informe</button>
+</div>
+
+<div class="lastitem">
+    <div class="derecha">
+        <button id="atras" [routerLink]="['/solicitudes']" class="btn-secondary">Volver atrás</button>
+    </div>
+</div>

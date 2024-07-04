@@ -1,0 +1,38 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="tabla margen">
+        <h3 class="fs-3 text-center">Lista de Unidades eliminadas</h3>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Facultad</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col" class="text-center">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let unid of unidades | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index ">
+                    <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.nombre}}</td>
+                    <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.facultad}}</td>
+                    <td scope="col" (click)="selectedUnidad(unid.id)">{{unid.telefono}}</td>
+                    <td scope="col" class="text-center">
+
+                        <a (click)="removeUnidad(unid)" class="btn btn-primary text-center" title="Eliminar">
+                                  Restaurar
+                                </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+</div>

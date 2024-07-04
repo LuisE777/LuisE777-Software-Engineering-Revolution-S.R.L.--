@@ -1,0 +1,131 @@
+<mat-sidenav-container>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+
+            <!--PAGE NAME -->
+            <mat-list-item style="color: aliceblue;">
+                <h2 class="systemName">SISTEMA DE APOYO PARA COTIZACIONES</h2>
+
+            </mat-list-item>
+            <!--The user account-->
+            <span class="fill-remaining-space"> </span>
+
+        </mat-toolbar>
+    </mat-sidenav-content>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>
+<img src="assets/umsslogo.png" alt="">
+<div class="mb-5">
+    <h1 class="col-4 mx-auto text-center">Bienvenido al Sistema de apoyo de Cotizaciones UMSS</h1>
+    <p class="col-4 mx-auto text-center">Para continuar inicie sesión en el sistema. Si no posee una cuenta registrada contactese con el administrador.</p>
+    <div class="col-4 mx-auto text-center">
+        <button class="btn btn-primary">
+        <a class="link" href='/login'>Iniciar Sesión</a>
+      </button>
+    </div>
+</div>
+
+<hr>
+<h1 class="text-center title">Funciones del sistema</h1><br>
+<div class="d-flex text-center margen1">
+    <div class="col-md-4 py-4 px-2 cuadrado resaltar">
+        <b>Realizar cotizaciones </b>
+        <p>Con nuestro sistema podra realizar cotizaciones a distintas empresas del rubro</p>
+    </div>
+    <div class="col-md-4 py-4 px-2 cuadrado resaltar">
+        <b>Rastrear el proceso de tus cotizaciones</b>
+        <p>Podra ver si su cotizacion fue aceptada, rechazada o esta en procesos</p>
+    </div>
+    <div class=" col-md-1.9">
+        <p class="visi">aa</p>
+    </div>
+    <div class="col-md-4 py-4 px-2 cuadrado resaltar">
+        <b>Permite aceptar o rechazar cotizaciones</b>
+        <p>Como cotizador podra aceptar o rechazar solicitudes que le llegan</p>
+    </div>
+</div>
+
+<div class="d-flex text-center">
+    <div class="col-md-4 py-4 px-2 cuadrado resaltar">
+        <b>Añadir unidades de tu facultad</b>
+        <p>Como administrador podra afiliar nuevas unidades al sistema</p>
+    </div>
+    <div class="col-md-4 py-4 px-2 cuadrado resaltar">
+        <b>Registrar presupuestos</b>
+        <p>Como administrador podra asignar presupuestos a las distintas unidades</p>
+    </div>
+    <div class="col-md-4 py-4 px-2 cuadrado resaltar div-link" (click)="final()">
+        <b>Y mucho más</b>
+        <p>Contactate con el administrador para afiliarte</p>
+    </div>
+</div>
+<br>
+<hr>
+
+<div class="p-5 row justify-content-center align-items-center bg-box">
+    <div class="col-12 col-md-5">
+        <h1>Unidades afiliadas</h1>
+        <p style="text-align: center">{{ unidadesAfiliadas() }}</p>
+    </div>
+    <div class="col-12 col-md-7">
+        <div style="text-align: justify;" *ngFor="let unidad of UnidadesUmss">
+            <ul style="display: inline; float: left;">
+                <li>{{unidad.nombre}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="p-5 row justify-content-center align-items-center">
+    <div class="col-12 col-md-5">
+        <h1 class="title">Acerca de</h1>
+    </div>
+    <div class="col-12 col-md-7">
+        <div>
+            <p style="text-align: justify;">Esta plataforma nacio por la necesidad de agilizar los procesos de cotizaciones realizadas por nuestras distintas facultades y unidades de gasto. <br> Diseñada como parte de la convocatoria CPTIS-2120-2021, por la empresa Software Engineering
+                Revolution S.R.L compuesta del siguiente equipo altamente calificado:
+            </p>
+            <ul style="text-align: justify; padding-left: 15%; padding-right: 10%;">
+                <li>Caceres Rengel Stephany</li>
+                <li>Martinez Vargas Miguel</li>
+                <li>Quiñones Vargas Jorge Mauricio</li>
+                <li>Vallejos Vargas Luis Enrrique</li>
+            </ul>
+            <h2 class="title" style="text-align: justify !important;">Misión</h2>
+            <p style="text-align: justify;">Ayudar a las distintas facultades, unidades e individuos en sus procesos de cotizaciones, ofreciendo herramientas para agilizar los mismos.
+            </p>
+            <h2 class="title" style="text-align: justify !important;">Visión</h2>
+            <p style="text-align: justify;">Crecer como empresa para ofrecer el sistema a más universidades a nivel nacinal
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="p-5 row justify-content-center align-items-center bg-box">
+    <div class="col-12 col-md-5">
+        <h1>Contáctanos</h1>
+    </div>
+    <div class="col-12 col-md-7">
+        <div class="d-flex">
+            <h2 class="px-2"> <i class="material-icons">alternate_email</i> </h2>
+            <a class="link" href="mailto:softwareengineringrevolution@gmail.com">
+                <p>softwareengineringrevolution@gmail.com</p>
+            </a>
+        </div>
+        <div class="d-flex">
+            <h2 class="px-2"> <i class="material-icons">phone</i></h2>
+            <div>
+                <p>+591 - 65395565</p>
+                <p>+591 - 69535465</p>
+                <p>+591 - 70369689</p>
+                <p>+591 - 60778543</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div style="background-color: black; color: aliceblue; padding: 2rem;">
+        <p style="text-align: center; font-size: medium;">© 2021 - Software Enginering Revolution S.R.L</p>
+    </div>
+</footer>

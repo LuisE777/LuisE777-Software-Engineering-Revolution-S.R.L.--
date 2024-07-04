@@ -1,25 +1,59 @@
 <mat-sidenav-container>
-   <mat-sidenav-content>
-    <mat-toolbar color="primary" >
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
 
-      
-   <!--PAGE NAME -->
-      <mat-list-item style="color: aliceblue;">
-        <a >Sistema de cotizacion</a>
-       
-      </mat-list-item>
-      <!--The user account-->
-      <span class="fill-remaining-space"> </span>
-      
-      <button mat-button  fxShow.lt-md="false" fxShow.gt-sm="true">
-        <mat-icon style="color: aliceblue;">  account_circle  </mat-icon>
-        <span > </span>
-        <span style="color: aliceblue;">{{nameUser}}</span>
+            <!--PAGE NAME -->
+            <mat-list-item style="color: aliceblue;">
+                <h1 class="systemName">SISTEMA DE APOYO PARA COTIZACIONES</h1>
+
+            </mat-list-item>
+            <!--The user account-->
+            <span class="fill-remaining-space"> </span>
+            <!-- Button trigger modal -->
+            <button type="button" id="conv-btn" class="btn btn-primary" style="background-color: #3f51b5 !important;" data-bs-toggle="modal" data-bs-target="#conv-moneda">
+        Convertir moneda
       </button>
-      
 
+            <button mat-button fxShow.lt-md="false" fxShow.gt-sm="true" (click)="cerrar()">
+        <span class="username" >{{nameUser}}</span>        
 
-    </mat-toolbar>
-  </mat-sidenav-content>
-  <router-outlet></router-outlet>
+         <mat-icon> account_circle </mat-icon>
+        <span > </span>
+      </button>
+
+        </mat-toolbar>
+    </mat-sidenav-content>
+    <router-outlet></router-outlet>
 </mat-sidenav-container>
+<!--app-conv-moneda></app-conv-moneda-->
+
+<!-- Modal -->
+<div class="modal fade" id="conv-moneda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">{{ modal.titulo }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <mat-label>{{ modal.label }}</mat-label> <br>
+                    <mat-form-field [style.width.px]=327 appearance="outline">
+                        <input id="monto" matInput type="number" [formControl]="dolares" required>
+                        <mat-error *ngIf="dolares.invalid">{{ getErrorMessage() }}</mat-error>
+                    </mat-form-field>
+                    <button style="margin-left: 10%;" class="btn btn-danger btn-light" title="Cambiar conversion">
+                  <i class="material-icons btn-small" id="cambiar" (click)="cambiar()">swap_horiz</i>
+              </button>
+                </form>
+                <div>
+                    <h3>Valor convertido: {{ valorConvertido() }}</h3>
+                    <h5 style="margin-top: -20px;">🛈 Tasa de cambio actual: {{ modal.tasa }} </h5>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cerrar-btn" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

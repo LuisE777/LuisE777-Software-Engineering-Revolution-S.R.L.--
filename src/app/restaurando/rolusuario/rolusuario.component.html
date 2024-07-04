@@ -1,0 +1,37 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="tabla margen">
+        <h1 class="text-center">Lista de roles eliminados</h1>
+        <table class="table table-striped ">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th class="text-center">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rol of RolesUmss  | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                    <td scope="col"> {{rol.rolnom}} </td>
+                    <td scope="col"> {{rol.descrip}} </td>
+                    <td scope class="text-center">
+
+                        <button class="btn btn btn-primary" title="Eliminar rol" (click)="eliminarRol(rol, i)">
+                                    Restaurar
+                                </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+</div>

@@ -32,7 +32,7 @@ import {MatListModule} from '@angular/material/list'
     FlexLayoutModule,
     MatExpansionModule,
     MatListModule 
-    
+
   ],
 })
 export class SharedModule { }

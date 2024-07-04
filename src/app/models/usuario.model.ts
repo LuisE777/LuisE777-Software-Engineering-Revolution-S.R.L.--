@@ -2,7 +2,7 @@ export interface Usuario{
     name:string,
     lastname:string,
     email:string,
-    password:string,
     cellphone:string, 
+    unidaddegasto:string,
     rol:string
 }

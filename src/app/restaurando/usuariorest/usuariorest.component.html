@@ -1,0 +1,45 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="tabla margen">
+        <h1 class="text-center">Lista de usuarios eliminadoss</h1>
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Celular</th>
+                    <th>Rol</th>
+                    <th>Unidad de Gasto</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of UsuariosUmss | paginate: { itemsPerPage: 10, currentPage: p } ;let i = index">
+                    <td scope="col"> {{usuario.name}}</td>
+                    <td scope="col"> {{usuario.lastname}}</td>
+                    <td scope="col"> {{usuario.email}} </td>
+                    <td scope="col"> {{usuario.cellphone}} </td>
+                    <td scope="col"> {{usuario.rol}} </td>
+                    <td scope="col"> {{usuario.unidaddegasto}} </td>
+                    <td scope="col" class="colum">
+                        <div>
+                            <button class="btn btn btn-primary" title="Eliminar rol" (click)="eliminarUsuario(usuario, i)">
+                            Restaurar
+                        </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+
+</div>

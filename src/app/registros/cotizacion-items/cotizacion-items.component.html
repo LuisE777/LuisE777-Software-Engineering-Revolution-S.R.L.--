@@ -1,0 +1,170 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <h1>Añadir cotizaciones de items</h1>
+    <div class="card px-3">
+        <h2>Rellene el formulario de solicitud</h2>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 row align-items-center mb-3">
+                        <div class=" d-flex">
+                            <label for="itemsuperior" class="form-label">Empresa: </label> &nbsp;
+                            <label> {{nameEmpresa}}</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 row align-items-center mb-3  visi">
+                        <div class="col-12 col-md-4">
+                            <label for="itemsuperior" class="form-label">Cotización: <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-8  visi">
+                            <select class="form-select letra3" id="empresaCotizacion" (click)="selectEmpresaCot($event)" aria-label="Default select example" required>
+                                <option selected disabled>Selecione la cotizacion</option>
+                                <option *ngFor="let cotizacion of cotizaciones" id="itemsCargados" [value]="cotizacion.id">
+                                    {{cotizacion.id}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-evenly">
+                    <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
+                        <div class="col-12 col-md-3 col-lg-5">
+                            <label for="plazoEntrega" class="form-label">Plazo de entrega <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <input type="text" class="form-control letra3" id="plazoEntrega" placeholder="Ingrese..." formControlName="plazoEntrega" #plazoEntrega required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': form.controls['plazoEntrega'].errors && form.controls['plazoEntrega'].touched}">
+                            <!-- error -->
+                            <div *ngIf="form.controls['plazoEntrega'].invalid && (form.controls['plazoEntrega'].dirty || form.controls['plazoEntrega'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['plazoEntrega'].errors">
+                                    El campo es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
+                        <div class="col-12 col-md-3 col-lg-5">
+                            <label for="fechaValidez" class="form-label">Fecha Validez <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <input type="date" class="form-control letra3" id="fechaValidez" placeholder="Ingrese..." formControlName="fechaValidez" #fechaValidez required [ngClass]="{'is-invalid': form.controls['fechaValidez'].errors && form.controls['fechaValidez'].touched}">
+                            <!-- error -->
+                            <div *ngIf="form.controls['fechaValidez'].invalid && (form.controls['fechaValidez'].dirty || form.controls['fechaValidez'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['fechaValidez'].errors">
+                                    El campo es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4 row align-items-center mb-3">
+                        <div class="col-12 col-md-3 col-lg-5">
+                            <label for="total" class="form-label">Total <span class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <input type="number" class="form-control letra3" id="total2" placeholder="Ingrese..." formControlName="total" #total required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': form.controls['total'].errors && form.controls['total'].touched}">
+                            <!-- error -->
+                            <div *ngIf="form.controls['total'].invalid && (form.controls['total'].dirty || form.controls['total'].touched)" class="text-danger font-weight-light">
+                                <div *ngIf="form.controls['total'].errors">
+                                    El campo es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 row align-items-center">
+                    <div class="col-12 col-md-2">
+                        <label for="observaciones" class="form-label">Observaciones <span
+                                class="text-danger">*</span></label>
+                    </div>
+
+                    <div class="col-12 col-md-10">
+                        <input type="text" class="form-control letra3" id="observaciones" placeholder="Ingrese..." formControlName="observaciones" #observaciones required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': form.controls['observaciones'].errors && form.controls['observaciones'].touched}">
+                        <!-- error -->
+                        <div *ngIf="form.controls['observaciones'].invalid && (form.controls['observaciones'].dirty || form.controls['observaciones'].touched)" class="text-danger font-weight-light">
+                            <div *ngIf="form.controls['observaciones'].errors">
+                                El campo es obligatorio.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <label for="observaciones" class="form-label">Subir archivo (PDF)<span
+                                class="text-danger">*</span></label>
+
+                    </div>
+                    <input class="form-control" type="file" id="formFile" accept="application/pdf" (change)="onFileSelect($event)">
+
+                </div>
+            </form>
+
+            <br>
+            <div class="col text-center">
+                <h2 class="">Lista de ítems cotizados</h2>
+            </div>
+            &nbsp;
+            <div>
+                <table id="tablita" class="table table-striped table-bordered text-center ">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+
+                            <th>Unidad</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>&nbsp;Total Importe&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cotizacion of cotizacionLista ; let i = index ">
+
+                            <td *ngIf="esSolicitud(cotizacion.solicitud_id)">{{i+1}}</td>
+
+                            <td>unidades</td>
+                            <td *ngIf="esSolicitud(cotizacion.solicitud_id)">{{cotizacion.nombre}}</td>
+                            <td *ngIf="esSolicitud(cotizacion.solicitud_id)">{{cotizacion.descrip}}</td>
+                            <td *ngIf="esSolicitud(cotizacion.solicitud_id)">{{cotizacion.cantidad}} </td>
+                            <td *ngIf="esSolicitud(cotizacion.solicitud_id)">
+                                <div>
+                                    <input type="number" name="" id="" [(ngModel)]="cotizacion.precio">
+                                </div>
+                            </td>
+                            <td *ngIf="esSolicitud(cotizacion.solicitud_id)">
+                                <div>
+                                    <input type="number" name="" id="" [(ngModel)]="cotizacion.total_importe">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--button type="button" class="btn btn-primary" (click)="guardarItems()">Guardar items en la cotizacion</button-->
+            </div>
+            <!--/div-->
+
+            <div class="row mx-auto">
+                <button class="col-12 col-md-4 col-lg-2 btn btn-primary mb-2 mb-md-0" type="button" (click)="submitForm()">Guardar</button>
+                <button class="col-12 col-md-4 col-lg-2 btn btn-danger mx-md-2 " (click)="goBack()" type="button">Cancelar Todo</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title mb-0" id="exampleModalLabel">Añadir un item</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-form-items-cot></app-form-items-cot>
+            </div>
+        </div>
+    </div>
+</div>

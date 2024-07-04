@@ -1,12 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html, body { height: 100% !important; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; }
+html,
+body {
+    height: 100% !important;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
 
 .bg-comp {
-    background: rgb(237, 237, 237) !important;
+    background: rgb(237, 237, 237);
 }
 
 .btn-primary {
     background: #003975 !important;
+}
+
+.visi {
+    visibility: hidden;
+}
+
+.margen {
+    margin-top: -24px;
+}
+
+.margen1 {
+    margin-top: -24px;
+}
+
+.cuadrado {
+    width: 32.6%;
+}
+
+
+/*INIT*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    float: right;
+    height: auto !important;
+    margin-bottom: auto;
 }

@@ -23,19 +23,19 @@ export class AutocompletarComponent implements OnInit{
   options = [];
   filteredOptions: Observable<any[]>;
   Word:string;
-  
+
   NotificarEleccion(){ //Only     
     this.sendToDialog.emit(this.Word);
   }
-  
+
   getWord(cad: string){
     return this.Word=cad;    
   }
 
   subscription: Subscription;
-    
+
   constructor(private service: Service,public sendName: NoticeallService) {
-    
+
      this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       debounceTime(400),
@@ -44,26 +44,33 @@ export class AutocompletarComponent implements OnInit{
             return this.filter(val || '')
        }) 
     )
+    //console.log('los datssssss',this.filteredOptions);
    }
+   //This ones sets the name Of the Item opened to edit
    nameit:string;
+
   ngOnInit() {  
-    this.nameit=this.sendName.nombreItem;
+    //this.nameit = this.sendName.nombreItem;
+    //OPEN CLEANS THE OBJECT
+    //this.service.getData();
+
   }
-  
+
   filter(val: string): Observable<any[]> {
     // call the service which makes the http-request
+    //console.log(val);
     return this.service.getData()
      .pipe(
        map(response => response.filter(option => { 
+         this.Word=val; 
          this.sendName.nombreItem = this.Word;
          //console.log('This one', val);
-         this.getWord(val);
+         //this.getWord(val);
+
          //console.log('Retruns all',option.idproducto); //Try to get only the id of the selected Product
-         return option.nombre.toLowerCase().indexOf(val.toLowerCase()) != -1
+         return option.nomitem.toLowerCase().indexOf(val.toLowerCase()) != -1
          // === 0 has to be equal from the initial index  -->  So from 0 
        }))
      )
-   }  
-  
-   
+   }    
 }

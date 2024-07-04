@@ -1,0 +1,41 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="tabla margen">
+        <h1 class="text-center">Lista de facultades eliminadas</h1>
+
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Decano</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Correo</th>
+                    <th>Opciones </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let facultad of facultades |paginate: { itemsPerPage: 10, currentPage: p } ">
+                    <td scope="col"> {{facultad.nombre}}</td>
+                    <td scope="col"> {{facultad.decano}}</td>
+                    <td scope="col"> {{facultad.telefono}} </td>
+                    <td scope="col"> {{facultad.direccion}} </td>
+                    <td scope="col"> {{facultad.correo}} </td>
+                    <td scope="col" class="text-center d-flex">
+                        <a (click)="restaurarFacultad(facultad)" class="btn btn-primary" title="Eliminar">
+                        Restaurar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+</div>

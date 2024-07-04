@@ -1,18 +1,56 @@
-.boton{
-    margin-right: 10px;    
+.boton {
+    margin-right: 10px;
 }
 
-thead{
+.input3 {
+    width: 20%;
+    height: 20%;
+}
+
+.margen2 {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+.margen5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+thead {
     background-color: #3f51b5;
     color: white;
 }
 
 .tabla {
-margin: auto;
-   width: 50% !important; 
-   
+    margin: auto;
+    width: 90% !important;
 }
 
 td {
     background-color: white !important;
+}
+
+.derecha {
+    text-align: center;
+}
+
+
+/*EXTRA ADDITIONS*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 83%;
+    float: right;
+    height: 100vh;
 }

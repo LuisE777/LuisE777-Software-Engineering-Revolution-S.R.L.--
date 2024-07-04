@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="flexbox">
+        <h1 class=" fw-bold">REGISTRAR UN PRESUPUESTO PARA LA GESTION {{ gestion }}</h1>
+        <form>
+            <label class=" letra2"><strong class="red"> * </strong> Requeridos</label>
+            <div class="field">
+                <label class="form-label letra">Unidad de gasto<strong class="red"> * </strong></label> <br>
+                <mat-form-field [style.width.px]=327 appearance="outline">
+                    <mat-select id="unidad" [formControl]="unidad">
+                        <mat-option *ngFor="let unidad of UnidadesUmss" [value]="unidad.id">
+                            {{unidad.nombre}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="unidad.invalid">Seleccione una unidad</mat-error>
+                </mat-form-field>
+                <br>
+                <label class="form-label letra">Presupuesto<strong class="red"> * </strong></label> <br>
+                <mat-form-field [style.width.px]=327 appearance="outline">
+                    <input id="presupuesto" matInput type="number" [formControl]="presupuesto" required>
+                    <span matPrefix>Bs.</span>
+                    <mat-error *ngIf="presupuesto.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+
+        </form>
+        <div class="text-center">
+            <button *ngIf="activarBtn" class="boton" id="submit" mat-raised-button color="primary" style="background-color: #003975; color: white;" type="submit" (click)="guardarPresupuesto()">Guardar</button>
+            <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button color="primary" routerLink="/tablero">Cancelar</button>
+        </div>
+    </div>
+</div>

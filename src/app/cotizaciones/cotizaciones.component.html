@@ -1,0 +1,47 @@
+<app-navbar>
+</app-navbar>
+
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+
+<div class="sidecontent">
+    <div class="tabla">
+        <h1 class="text-center">Solicitudes para cotizacion </h1>
+        <div class="d-flex">
+            <p class="text-center margen2">Buscar:</p>
+
+            <input type="text" class="form-control input3" name="filterPost" [(ngModel)]="filterPost">
+        </div>
+        <table id="tablaSol" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Solicitante</th>
+                    <th>Concepto</th>
+                    <th>Precio Estimado</th>
+                    <th>Fecha y Hora de Solicitud</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <!---->
+            <p ng-if="(!of solicitudService.solicitudesitemspivot)">{{message}}</p>
+            <tbody>
+                <tr id="trabaja" *ngFor="let solicitud of solicitudService.solicitudesitemspivot | paginate: { itemsPerPage: 12, currentPage: p } |filter3 : filterPost; index as i ">
+
+                    <td *ngIf="esAceptado(solicitud.estado)">{{solicitud.responsable}} </td>
+                    <td *ngIf="esAceptado(solicitud.estado)"> {{solicitud.tipo}} </td>
+                    <td *ngIf="esAceptado(solicitud.estado)"> {{solicitud.montoestimado}} </td>
+                    <td *ngIf="esAceptado(solicitud.estado)"> {{solicitud.created_at}} </td>
+                    <td *ngIf="esAceptado(solicitud.estado)"> {{solicitud.estado}} </td>
+                    <td *ngIf="esAceptado(solicitud.estado)">
+                        <a id="gestionando" (click)="obteniendoSolicitud(solicitud)" [routerLink]="['/cotizando',solicitud.id]" class="mx-1 btn btn-primary boton letra2 text-center" title="Gestionar">Gestionar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+</div>

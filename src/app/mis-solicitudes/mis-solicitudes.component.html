@@ -1,0 +1,73 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<!-- finish -->
+
+<div class="sidecontent">
+
+    <div class="tabla">
+        <h1 class="text-center">Mis solicitudes </h1>
+        <div class="d-flex">
+            <p class="text-center margen2">Buscar:</p>
+            <input type="text" class="form-control input3" name="filterPost" [(ngModel)]="filterPost">
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Detalle de la solicitud</th>
+                    <th>Precio estimado</th>
+                    <th>Estado</th>
+
+                    <th>Fecha y hora</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solicitud of solicitudService.solicitudes   |filter7 : filterPost; index as i">
+
+                    <td *ngIf="esUsuario(solicitud.responsable)">{{solicitud.tipo}} </td>
+                    <td *ngIf="esUsuario(solicitud.responsable)"> {{solicitud.montoestimado}} </td>
+                    <td *ngIf="esUsuario(solicitud.responsable)"> {{solicitud.estado}} </td>
+                    <td *ngIf="esUsuario(solicitud.responsable)"> {{solicitud.created_at}} </td>
+                    <td *ngIf="esUsuario(solicitud.responsable)">
+                        <a id="gestionando" (click)="mostrarInforme(solicitud)" class="mx-1 btn btn-primary boton letra2 text-center" title="Mostrar detalles de la solicitud">Detalles</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="botonCan">
+            <button id="Cancelar" (click)="goBack()" class="btn-secondary ">Volver al menú</button>
+        </div>
+
+        <!--STARTS THE HIDE-->
+        <ng-container *ngIf="visible">
+
+            <!-- hide by now -->
+
+            <ng-container *ngIf="( informeOne | json) != ({} | json)">
+                <div class="bg-white shadow-sm p-3">
+
+                    <h4> Tipo de informe: </h4>
+                    <p>{{informeOne.tipo_informe}}</p>
+                    <h4>Cotizador:</h4>
+                    <p> {{informeOne.nombre_cotizador}}</p>
+                    <h4> Detalle: </h4>
+
+                    <p>Estimado(a), {{informeOne.informe_escrito}}</p>
+                    <h4> Fecha de emision: </h4>
+                    <p>{{informeOne.created_at}}</p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="( informeOne | json) === ({} | json)">
+                <h4>Esta solicitud aun no tienen un informe</h4>
+            </ng-container>
+
+        </ng-container>
+
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<ul id="accordion" class="accordion">
+    <a routerLink="/tablero">
+        <div class="menu">
+            <span class="material-icons">dashboard</span> Tablero principal
+        </div>
+    </a>
+    <div *ngIf="loop()"></div>
+    <div *ngIf="verificarToken()"></div>
+    <div *ngIf="privilegios_json.admin">
+        <h2 class="menu" style="color: aliceblue; background-color: #3f51b5; height: 60px;">Administrador</h2>
+        <li *ngFor="let menu of menuAdmin; let i = index" [class.active]="menu.active">
+            <div class="menu" (click)="toggle(i, menuAdmin)">
+                <i [class]="menu.iconClass"></i>
+                <span class="material-icons">{{menu.iconClass}}</span> {{ menu.name }}
+                <span class="material-icons">
+          expand_more
+          </span>
+            </div>
+            <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
+                <li *ngFor="let submenu of menu.submenu">
+                    <a [routerLink]="[submenu.url]">{{ submenu.name }}</a>
+                </li>
+            </ul>
+        </li>
+    </div>
+    <div *ngIf="privilegios_json.jefe">
+        <h2 class="menu" style="color: aliceblue; background-color: #3f51b5; height: 60px;">Jefe de unidad</h2>
+        <li *ngFor="let menu of menuJefe; let i = index" [class.active]="menu.active">
+            <div class="menu" (click)="toggle(i, menuJefe)">
+                <i [class]="menu.iconClass"></i>
+                <span class="material-icons">{{menu.iconClass}}</span> {{ menu.name }}
+                <span class="material-icons">
+            expand_more
+            </span>
+            </div>
+            <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
+                <li *ngFor="let submenu of menu.submenu">
+                    <a [routerLink]="[submenu.url]">{{ submenu.name }}</a>
+                </li>
+            </ul>
+        </li>
+    </div>
+    <div *ngIf="privilegios_json.cotizador">
+        <h2 class="menu" style="color: aliceblue; background-color: #3f51b5; height: 60px;">Cotizador</h2>
+        <li *ngFor="let menu of menuCotizador; let i = index" [class.active]="menu.active">
+            <div class="menu" (click)="toggle(i, menuCotizador)">
+                <i [class]="menu.iconClass"></i>
+                <span class="material-icons">{{menu.iconClass}}</span> {{ menu.name }}
+                <span class="material-icons">
+            expand_more
+            </span>
+            </div>
+            <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
+                <li *ngFor="let submenu of menu.submenu">
+                    <a [routerLink]="[submenu.url]">{{ submenu.name }}</a>
+                </li>
+            </ul>
+        </li>
+    </div>
+    <div *ngIf="privilegios_json.usuario">
+        <h2 class="menu" style="color: aliceblue; background-color: #3f51b5; height: 60px;">Administrativo</h2>
+        <li *ngFor="let menu of menuAdministrativo; let i = index" [class.active]="menu.active">
+            <div class="menu" (click)="toggle(i, menuAdministrativo)">
+                <i [class]="menu.iconClass"></i>
+                <span class="material-icons">{{menu.iconClass}}</span> {{ menu.name }}
+                <span class="material-icons">
+            expand_more
+            </span>
+            </div>
+            <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
+                <li *ngFor="let submenu of menu.submenu">
+                    <a [routerLink]="[submenu.url]">{{ submenu.name }}</a>
+                </li>
+            </ul>
+        </li>
+    </div>
+</ul>

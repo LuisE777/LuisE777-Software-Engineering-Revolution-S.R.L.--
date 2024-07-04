@@ -1,0 +1,76 @@
+<p>
+    Resumen de actividades</p>
+
+<div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="16px">
+    <mat-card>
+        <mat-card-header class="dashboard-card__header">
+            <mat-card-title>
+                <h3 class="kpi-title">Nro. de usuarios</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <!--<hr>-->
+        <mat-card-content class="dashboard-card-content kpi-result">
+
+            <span>{{ datalogs.users }} </span>
+            <p class="kpi-difference">Total registrados</p>
+
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header class="dashboard-card__header">
+            <mat-card-title>
+                <h3 class="kpi-title">Solicitudes</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <!--<hr>-->
+        <mat-card-content class="dashboard-card-content kpi-result">
+
+            <span>{{datalogs.solicitudes}}</span>
+            <p class="kpi-difference">Solicitudes realizadas</p>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card style="width: 20%;">
+        <mat-card-header class="dashboard-card__header">
+            <mat-card-title>
+                <h3 class="kpi-title">Cotizaciones recividas</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <!--<hr>-->
+        <mat-card-content class="dashboard-card-content kpi-result">
+            <span>{{datalogs.cotizaciones}} </span>
+            <p class="kpi-difference">Cotizaciones recividas/emitidas</p>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header class="dashboard-card__header">
+            <mat-card-title>
+                <h3 class="kpi-title">Nro. de unidades</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <!--<hr>-->
+        <mat-card-content class="dashboard-card-content kpi-result">
+
+            <span>{{datalogs.unidades}} </span>
+            <p class="kpi-difference">Total registrados</p>
+
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card style="width: 25%;">
+        <mat-card-header class="dashboard-card__header">
+            <mat-card-title>
+                <h3 class="kpi-title">Monto en presupuestos</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <!--<hr>-->
+        <mat-card-content class="dashboard-card-content kpi-result">
+            <span>Bs. {{datalogs.totalasignacion}} </span>
+            <p class="kpi-difference">Total asignado a compra de items en la gestion actual</p>
+
+        </mat-card-content>
+    </mat-card>
+
+</div>

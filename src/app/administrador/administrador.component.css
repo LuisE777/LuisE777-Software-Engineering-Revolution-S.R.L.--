@@ -1,0 +1,88 @@
+.mat-toolbar.mat-primary {
+    /*background: #007bff;*/
+    color: #003770;
+}
+
+.angular-logo {
+    margin: 0 4px 3px 0;
+    height: 35px;
+    vertical-align: middle;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.visi {
+    visibility: hidden;
+}
+
+.margen1 {
+    margin-top: -24px;
+}
+
+.cuadrado {
+    width: 32.4%;
+}
+
+.visi {
+    visibility: hidden;
+}
+
+
+/*INIT*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    float: right;
+    height: 100vh;
+}
+
+.margen {
+    margin-top: 0px;
+}
+
+
+/*END*/
+
+.cuadrado {
+    width: 32.4%;
+}
+
+.visi {
+    visibility: hidden;
+}
+
+
+/*INIT*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    float: right;
+    height: 100vh;
+}
+
+
+/*END*/
+
+.cuadrado {
+    width: 32.4%;
+}

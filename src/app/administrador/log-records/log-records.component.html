@@ -1,0 +1,184 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <div class="content-body">
+        <h1 class="Titulo">Tablero general</h1>
+        <app-info-cards>
+        </app-info-cards>
+        <div class="heading">
+            <h4>Ultimos cambios</h4>
+        </div>
+        <mat-tab-group>
+            <mat-tab label="General">
+                <div class="table-body">
+                    <div class="example-header">
+                        <mat-form-field>
+                            <mat-label>Buscar</mat-label>
+                            <input matInput (keyup)="applyFilterGenLogs($event)" #input>
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container mat-elevation-z8">
+                        <mat-table #table [dataSource]="dataSourceGeneral" matSort>
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position">
+                                <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.log_name }} </mat-cell>
+                            </ng-container>
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+                                <mat-cell *matCellDef="let element" class="centre">
+                                    <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '3.5px', 'margin-top': '10px'}">{{element.description}}</p>
+                                </mat-cell>
+                            </ng-container>
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="weight.properties.user.name">
+                                <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+                                <mat-cell *matCellDef="let element "> {{element.properties.user.name}} {{element.properties.user.lastname}} </mat-cell>
+                            </ng-container>
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="symbol.properties.ip">
+                                <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
+                            </ng-container>
+                            <!-- Date Column -->
+                            <ng-container matColumnDef="fecha">
+                                <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumnsGeneral"></mat-header-row>
+                            <mat-row (click)="openDialog(row)" *matRowDef="let row; columns: displayedColumnsGeneral;"></mat-row>
+                        </mat-table>
+                        <mat-paginator #firstPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Solicitudes">
+                <!-- 2cond tab -->
+                <div class="table-body">
+                    <div class="example-header">
+                        <mat-form-field>
+                            <mat-label>Buscar</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" #input>
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container mat-elevation-z8">
+                        <mat-table #table [dataSource]="dataSourceSolicitud" matSort>
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position">
+                                <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.log_name}} </mat-cell>
+                            </ng-container>
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '3.5px', 'margin-top': '10px'}">{{element.description}}</p>
+                                </mat-cell>
+                            </ng-container>
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="weight.properties.user.name">
+                                <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+                                <mat-cell *matCellDef="let element "> {{element.properties.user.name}} {{element.properties.user.lastname}} </mat-cell>
+                            </ng-container>
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="symbol.properties.ip">
+                                <mat-header-cell *matHeaderCellDef> IP</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
+                            </ng-container>
+                            <!-- Date Column -->
+                            <ng-container matColumnDef="fecha">
+                                <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumnsSolicitud"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumnsSolicitud;"></mat-row>
+                        </mat-table>
+                        <mat-paginator #thirdPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </mat-tab>
+            <!--FINISH LINE SOLICITUDES TABLE -->
+            <mat-tab label="Cotizaciones">
+                <div class="table-body">
+                    <div class="example-header">
+                        <mat-form-field>
+                            <mat-label>Buscar</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" #input>
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container mat-elevation-z8">
+                        <mat-table #table [dataSource]="dataSource" matSort>
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position">
+                                <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.log_name}} </mat-cell>
+                            </ng-container>
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <p [ngStyle]="{'background-color': chooseColor(element), 'border-radius': '3.5px', 'margin-top': '10px'}">{{element.description}}</p>
+                                </mat-cell>
+                            </ng-container>
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="weight.properties.user.name">
+                                <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+                                <mat-cell *matCellDef="let element "> {{element.properties.user.name}} {{element.properties.user.lastname}} </mat-cell>
+                            </ng-container>
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="symbol.properties.ip">
+                                <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.properties.ip}} </mat-cell>
+                            </ng-container>
+                            <!-- Date Column -->
+                            <ng-container matColumnDef="fecha">
+                                <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                        <mat-paginator #secondPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Restauracion & Backup">
+                <div class="container-backs">
+                    <h4>Respaldos y puntos de restauracion </h4>
+                    <p>Al elegir "Restaurar" cualquier punto de restauracion, el sistema volvera al estado previo al punto de creacion </p>
+                    <div *ngIf="loading" class="center-pinner">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!loading" class="table-backs">
+                        <div>
+                            <button style="width: 25%; float: right;" [disabled]="loading" (click)="createNewBack()" mat-raised-button color="primary">Crear nuevo</button>
+                        </div>
+                        <table class="table table-striped accordion-body">
+                            <thead>
+                                <tr>
+                                    <th>Archivos</th>
+                                    <th style="float: right;">Operacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let solicitud of MassaArray; index as i  ">
+                                    <td *ngIf="hasName(MassaArray[i])"> {{ MassaArray[i] }}</td>
+                                    <td *ngIf="hasName(MassaArray[i])">
+                                        <button id="restaurar" style="float: right;" [disabled]="loading" (click)="restoreFromPoint(i)" class="mx-1 btn btn-primary boton letra2 text-center" title="Restaurar en este punto">Restaurar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<app-navbar>
+</app-navbar>
+
+<!-- STARTS -->
+
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<!-- finish -->
+
+<div class="sidecontent">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7 bg-comp p-4">
+                <h3 class="fs-3 fw-bold">EDITAR FACULTAD</h3>
+                <div class="">
+                    <form [formGroup]="angForm" (ngSubmit)="submitForm()">
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="nombre" class="form-label">Nombre de la Facultad<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..." formControlName="nombre" #nombre required [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['nombre'].errors">
+                                        <span class="letra1">Nombre es obligatorio, no debe tener números. <br></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="decano" class="form-label">Decano<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="decano" placeholder="Ingrese..." formControlName="decano" #decano required [ngClass]="{'is-invalid': angForm.controls['decano'].errors && angForm.controls['decano'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['decano'].invalid && (angForm.controls['decano'].dirty || angForm.controls['decano'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['decano'].errors">
+                                        <span class="letra1">Decano es obligatorio, no debe tener números.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="direccion" class="form-label">Dirección<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="direccion" placeholder="Ingrese..." formControlName="direccion" #direccion required [ngClass]="{'is-invalid': angForm.controls['direccion'].errors && angForm.controls['direccion'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['direccion'].invalid && (angForm.controls['direccion'].dirty || angForm.controls['direccion'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['direccion'].errors">
+                                        <span class="letra1">Dirección es obligatorio.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="telefono" placeholder="Ingrese..." formControlName="telefono" #telefono required [ngClass]="{'is-invalid': angForm.controls['telefono'].errors && angForm.controls['telefono'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['telefono'].invalid && (angForm.controls['telefono'].dirty || angForm.controls['telefono'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['telefono'].errors">
+                                        <span class="letra1">Teléfono es obligatorio, no debe tener letras.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="correo" class="form-label">Correo <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="correo" placeholder="Ingrese..." formControlName="correo" #correo required [ngClass]="{'is-invalid': angForm.controls['correo'].errors && angForm.controls['correo'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['correo'].invalid && (angForm.controls['correo'].dirty || angForm.controls['correo'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['correo'].errors">
+                                        <span class="letra1">Correo es obligatorio</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-evenly">
+                            <button type="submit" class="btn btn-primary letra2">
+                            Guardar
+                        </button>
+                            <button type="button" class="btn btn-secondary letra2" (click)="goBack()">Cancelar</button>
+                        </div>
+                        <!---->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,79 +1,74 @@
-<div class="container col-12 col-md-6 mt-5">
-    <div class="bg-comp p-3">
-        <h3 class="fs-3 fw-bold">REGISTRO DE ITEM</h3>
-        <div class="">
-            <form [formGroup]="angForm" (ngSubmit)="submitForm()">
-                <div class="row align-items-center mb-3">
-                    <div class="col-10 col-md-4">
-                        <label for="itemgasto" class="form-label">Item de gasto</label>
-                    </div>
-                    <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="itemgasto" placeholder="Ingrese..."
-                            formControlName="nomitem" #nomitem required
-                            [ngClass]="{'is-invalid': angForm.controls['nomitem'].errors && angForm.controls['nomitem'].touched}">
-                        <!-- error -->
-                        <div *ngIf="angForm.controls['nomitem'].invalid && (angForm.controls['nomitem'].dirty || angForm.controls['nomitem'].touched)" class="text-danger font-weight-light">
-                            <div *ngIf="angForm.controls['nomitem'].errors">
-                                Nombre es obligatorio.
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="container  mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 bg-comp p-3">
+                <h3 class="fs-3 fw-bold">REGISTRO DE ITEM DE ÁREA ESPECÍFICA</h3>
+                <div class="">
+                    <form [formGroup]="angForm" (ngSubmit)="submitForm()">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="itemsuperior" class="form-label">Item de gasto general <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <select class="form-select letra3" id="itemsuperior" aria-label="Default select example" formControlName="itemsuperior" #itemsuperior required>
+                                    <option selected disabled>Selecione el Item General</option>
+                                    <option *ngFor="let item of itemSup" id="itemsCargados" value={{item.nomitemSup}}>{{item.nomitemSup}}</option>
+                                </select>
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['itemsuperior'].invalid && (angForm.controls['itemsuperior'].dirty || angForm.controls['itemsuperior'].touched)" class="text-danger font-weight-light">
+                                    <div *ngIf="angForm.controls['itemsuperior'].errors">
+                                        Item es obligatorio.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row align-items-center mb-3">
-                    <div class="col-10 col-md-4">
-                        <label for="detalle" class="form-label">Detalle</label>
-                    </div>
-                    <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="detalle" placeholder="Ingrese..."
-                            formControlName="descrip" #descrip required
-                            [ngClass]="{'is-invalid': angForm.controls['descrip'].errors && angForm.controls['descrip'].touched}">
-                        <!-- error -->
-                        <div *ngIf="angForm.controls['descrip'].invalid && (angForm.controls['descrip'].dirty || angForm.controls['descrip'].touched)" class="text-danger font-weight-light">
-                            <div *ngIf="angForm.controls['descrip'].errors">
-                                Detalle es obligatorio.
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="nomitem" class="form-label">Nombre del item <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra3" id="nomitem" placeholder="Ingrese..." formControlName="nomitem" #nomitem required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': angForm.controls['nomitem'].errors && angForm.controls['nomitem'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['nomitem'].invalid && (angForm.controls['nomitem'].dirty || angForm.controls['nomitem'].touched)" class="text-danger font-weight-light">
+                                    <div *ngIf="angForm.controls['nomitem'].errors">
+                                        El nombre es obligatorio. <br> No debe tener números.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row align-items-center mb-3">
-                    <div class="col-10 col-md-4">
-                        <label for="importepresupuesto" class="form-label">Importe Presupuesto</label>
-                    </div>
-                    <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="importepresupuesto" placeholder="Ingrese..."
-                            formControlName="montoasig" #montoasig required
-                            [ngClass]="{'is-invalid': angForm.controls['montoasig'].errors && angForm.controls['montoasig'].touched}">
-                        <!-- error -->
-                        <div *ngIf="angForm.controls['montoasig'].invalid && (angForm.controls['montoasig'].dirty || angForm.controls['montoasig'].touched)" class="text-danger font-weight-light">
-                            <div *ngIf="angForm.controls['montoasig'].errors">
-                                Monto asignado es obligatorio.
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="descrip" class="form-label">Descripción <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra3" id="descrip" placeholder="Ingrese..." formControlName="descrip" #descrip required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': angForm.controls['descrip'].errors && angForm.controls['descrip'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['descrip'].invalid && (angForm.controls['descrip'].dirty || angForm.controls['descrip'].touched)" class="text-danger font-weight-light">
+                                    <div *ngIf="angForm.controls['descrip'].errors">
+                                        Detalle es obligatorio. <br> No debe tener números.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row align-items-center mb-3">
-                    <div class="col-10 col-md-4">
-                        <label for="periodopresupuesto" class="form-label">Periodo Presupuesto</label>
-                    </div>
-                    <div class="col-10 col-md-6">
-                        <input type="text" class="form-control" id="periodopresupuesto" placeholder="Ingrese..."
-                            formControlName="periodo" #periodo required
-                            [ngClass]="{'is-invalid': angForm.controls['periodo'].errors && angForm.controls['periodo'].touched}">
-                        <!-- error -->
-                        <div *ngIf="angForm.controls['periodo'].invalid && (angForm.controls['periodo'].dirty || angForm.controls['periodo'].touched)" class="text-danger font-weight-light">
-                            <div *ngIf="angForm.controls['periodo'].errors">
-                                Periodo es obligatorio.
-                            </div>
+                        <div>
+                            <p class="text-danger">Los campos con (*) son obligatorios.</p>
                         </div>
-                    </div>
+                        <div class="d-flex justify-content-evenly">
+                            <!--<button type="submit" class="btn btn-primary" [ngClass]="{disabled: !angForm.valid}">-->
+                            <button type="submit" class="btn btn-primary letra3" [ngClass]="{disabled: !angForm.valid}" ls>
+                                Guardar
+                            </button>
+                            <button type="button" class="btn btn-secondary letra3" (click)="goBack()">Cancelar</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="d-flex justify-content-evenly">
-                    <button type="submit" class="btn btn-primary" [ngClass]="{disabled: !angForm.valid}">
-                        Guardar
-                    </button>
-                    <button type="button" class="btn btn-secondary">Cancelar</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

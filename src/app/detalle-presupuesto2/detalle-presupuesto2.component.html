@@ -1,0 +1,33 @@
+<app-navbar>
+</app-navbar>
+<h1 class="text-center">Presupuesto </h1>
+<h2 class="text-center">Año: {{anio}}</h2>
+<div>
+    <table class="table tabla ">
+        <thead>
+            <tr>
+                <th>Item Area Superior</th>
+                <th class="text-center ">Importe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let det of detalle ">
+                <td scope="col"> {{det.nomitemSup}}</td>
+                <td class="text-center " scope="col"> {{det.montoasig}}</td>
+            </tr>
+            <tr>
+                <td class="table-primary pp">Total presupuesto actual:</td>
+                <td class="table-primary text-center pp">{{importe}}</td>
+            </tr>
+            <tr>
+                <td class="table-primary pp">Total tope presupuestario:</td>
+                <td class="table-primary text-center pp">{{importe3}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    &nbsp;
+    <div class="derecha">
+        <button type="button" (click)="goBack()" class="btn btn-secondary text-center">Volver atrás</button>
+    </div>
+</div>

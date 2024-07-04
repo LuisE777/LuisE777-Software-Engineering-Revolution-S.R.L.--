@@ -1,206 +1,144 @@
-<mat-sidenav-container>
-    <mat-sidenav-content>
-     <mat-toolbar color="primary" >
- 
-       
-    <!--PAGE NAME -->
-       <mat-list-item style="color: aliceblue;">
-         <a >Sistema de cotizacion</a>
-        
-       </mat-list-item>
-       <!--The user account-->
-       <span class="fill-remaining-space"> </span>
-       
-       <button mat-button  fxShow.lt-md="false" fxShow.gt-sm="true">
-         <mat-icon style="color: aliceblue;">  account_circle  </mat-icon>
-         <span > </span>
-         <span style="color: aliceblue;">Administrador del sistema</span>
-       </button>
-     </mat-toolbar>
-   </mat-sidenav-content>
-   <router-outlet></router-outlet>
- </mat-sidenav-container>
-<form class="row g-3" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
-    <h2>
-        <div class="col-12">
-            <label class=" fw-bold" >
-                <p></p>
-                REGISTRO DE USUARIO 
+<app-navbar>
+</app-navbar>
+
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <form class="row g-3 margenes" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
+        <h2>
+            <div class="col-12">
+                <label class=" fw-bold">
+                    <h1>REGISTRO DE USUARIO</h1> 
+                </label>
+                <p>
+                    <label class=" letra2"><strong class="red"> * </strong> Requeridos</label>
+                </p>
+            </div>
+        </h2>
+        <!--                  -->
+        <div class="col-md-4">
+            <label class="titulo2">
+                DATOS PERSONALES
             </label>
-            <p>
-            <label  class=" letra2"><strong class="red"> * </strong> Requeridos</label>
-        </p>
         </div>
-    </h2>
-    <!--                  -->
-    <div class="col-md-4">
-        <label class="titulo2" >
-            DATOS PERSONALES
-        </label>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label class="titulo2">ROL</label>  
-    </div>
-    <div class="col-md-4">
-        <label class="titulo2">UNIDAD DE GASTO</label>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label class="form-label letra">Nombre<strong class="red"> * </strong></label>
-            <input type="email" class="form-control inputsito "  
-            formControlName="nombre" #nombre required
-            [ngClass]="{'is-invalid': miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched}"
-            id="nombre" >
-           <span class="form-text text-danger letra3" *ngIf="campoNoValido('nombre')">
-                 Nombre no valido
-           </span>
-        
+        <!--                  -->
+        <div class="col-md-4">
+            <label class="titulo2">ROL</label>
+        </div>
+        <div class="col-md-4">
+            <label class="titulo2">UNIDAD DE GASTO</label>
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label class="form-label letra">Nombre<strong class="red"> * </strong></label>
+            <input type="email" class="form-control inputsito input " formControlName="nombre" #nombre required [ngClass]="{'is-invalid': miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched}" id="nombre">
+            <span class="form-text text-danger letra3" *ngIf="campoNoValido('nombre')">
+                     Nombre no válido
+               </span>
 
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label class="form-label letra">Rol<strong class="red"> * </strong></label>
+            <select class="form-select selectito input" aria-label="Default select example" formControlName="rol" #rol required id="rol" [ngClass]="{'is-invalid': miFormulario.controls['rol'].errors && miFormulario.controls['rol'].touched}">
+                    <option selected="true" disabled="disabled">Selecione el rol</option>
+                    <option id="rolescargados"  *ngFor="let rol of RolesUmss" value={{rol.rolnom}}>{{rol.rolnom}}</option>
 
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label  class="form-label letra">Rol(Dentro de la unidad)<strong class="red"> * </strong></label>
-            <select  class="form-select selectito" aria-label="Default select example" formControlName="rol"
-            #rol required id ="rol"
-            [ngClass]="{'is-invalid': miFormulario.controls['rol'].errors && miFormulario.controls['rol'].touched}">
-                <option selected="true" disabled="disabled">Selecione el rol</option>
-                <option *ngFor="let rol of RolesUmss" value={{rol.rolnom}}>{{rol.rolnom}}</option>
-              
-            </select>
+                </select>
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('rol') ">
-                Por favor seleccione un rol
-          </span>
-    </div>
-    <div class="col-md-4">
-        <label  class="form-label letra">Unidad de Gasto<strong class="red"> * </strong></label>
-            <select class="form-select selectito" aria-label="Default select example" formControlName="unidad"
-            #unidad required id ="unidad"
-            [ngClass]="{'is-invalid': miFormulario.controls['unidad'].errors && miFormulario.controls['unidad'].touched}">
-                <option selected="true" disabled="disabled">Selecione la Unidad de Gasto</option>
-                <option *ngFor="let unidad of UnidadesUmss" value={{unidad.nombre}}>{{unidad.nombre}}</option>
-            </select>
+                    Por favor seleccione un rol
+              </span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label letra ">Unidad de Gasto<strong class="red"> * </strong></label>
+            <select class="form-select selectito input" aria-label="Default select example" formControlName="unidad" #unidad required id="unidad" [ngClass]="{'is-invalid': miFormulario.controls['unidad'].errors && miFormulario.controls['unidad'].touched}">
+                    <option selected="true" disabled="disabled">Selecione la Unidad de Gasto</option>
+                    <option id="unidadescargados" *ngFor="let unidad of UnidadesUmss" value={{unidad.nombre}}>{{unidad.nombre}}</option>
+                </select>
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('unidad')">
-                Por favor seleccione una unidad de gasto
-          </span>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label  class="form-label letra">Apellidos<strong class="red"> * </strong></label>
-            <input id ="apellido" type="text" class="form-control inputsito" formControlName="apellido" 
-             #apellido required
-            [ngClass]="{'is-invalid': miFormulario.controls['apellido'].errors && miFormulario.controls['apellido'].touched}"
-           >
+                    Por favor seleccione una unidad de gasto
+              </span>
+        </div>
+        <!--                  -->
+
+        <div class="col-md-4">
+            <label class="form-label letra">Apellidos<strong class="red"> * </strong></label>
+            <input id="apellido" type="text" class="form-control inputsito input" formControlName="apellido" #apellido required [ngClass]="{'is-invalid': miFormulario.controls['apellido'].errors && miFormulario.controls['apellido'].touched}">
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('apellido')">
-                
-                Apellido no valido
-          </span>
-    </div>
-    <div class="col-md-4">
-        <label  class="form-label letra">Facultad<strong class="red"> * </strong></label>
-            <select class="form-select selectito" aria-label="Default select example" formControlName="facultad" 
-            #facultad required id ="facultad"
-            [ngClass]="{'is-invalid': miFormulario.controls['facultad'].errors && miFormulario.controls['facultad'].touched}">
-                <option selected="true" disabled="disabled">Selecione la facultad</option>
-                <option value="Fac. Ciencias y Tecnología">Fac. Ciencias y Tecnología</option>
-                <option value="Fac. Ciencias Económicas">Fac. Ciencias Económicas</option>
-                <option value="Fac. Ciencias Sociales">Fac. Ciencias Sociales</option>
-                <option value="Fac. Ciencias Jurídicas y Políticas">Fac. Ciencias Jurídicas y Políticas</option>
-                <option value="Fac. Arquitectura y Ciencias del Habitat">Fac. Arquitectura y Ciencias del Habitat</option>
-                <option value="Fac. Humanidades y Cs. de Educación">Fac. Humanidades y Cs. de Educación</option>
-                <option value="Fac. Medicina">Fac. Medicina</option>
-                <option value="Fac. Odontología">Fac. Odontología</option>
-                <option value="Fac. Cs. Farmaceuticas y Bioquimicas">Fac. Cs. Farmaceuticas y Bioquimicas</option>
-                <option value="Fac. Enfermería">Fac. Enfermería</option>
-                <option value="Fac. Ciencias Agrícolas y Pecuarias">Fac. Ciencias Agrícolas y Pecuarias</option>
-                <option value="Fac. Desarrollo Rural y Territorial">Fac. Desarrollo Rural y Territorial</option>
-                <option value="Fac. Ciencias Veterinarias">Fac. Ciencias Veterinarias</option>
-                <option value="Fac. Politécnica del Valle Alto">Fac. Politécnica del Valle Alto</option>
-            </select>
-            <span class="form-text text-danger letra3" *ngIf="campoNoValido('facultad')">
-                Por favor seleccione una facultad
-          </span>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">          
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <p></p>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <p></p>
-    </div>
-    <div class="col-md-4">
-        <p></p>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label class=" titulo2">
-           CONTRASEÑA
-        </label>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label class="titulo2">INFORMACIÓN DE CONTACTO </label>
-    </div>
-    <div class="col-md-4">
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label for="inputCity" class="form-label letra">Cree una contraseña<strong class="red"> * </strong></label>
-            <input type="password" class="form-control inputsito"  formControlName="password" 
-            #password required id ="password"
-            [ngClass]="{'is-invalid': miFormulario.controls['password'].errors && miFormulario.controls['password'].touched}">
-           <span class="form-text text-danger letra3" *ngIf="campoNoValido('password')" >
-               La contraseña debe ser mayor de 6 caracteres
-           </span>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label for="inputState" class="form-label letra">Correo electronico<strong class="red"> * </strong></label>
-            <input type="text" class="form-control inputsito" formControlName="correo"
-            #correo required id ="correo"
-            [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
-         
+
+                    Apellido no válido
+              </span>
+        </div>
+        <div class="col-md-4"></div>
+        <!--                  -->
+        <div class="col-md-4">
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label class=" titulo2">
+               CONTRASEÑA
+            </label>
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label class="titulo2">INFORMACIÓN DE CONTACTO </label>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label for="inputCity" class="form-label letra">Cree una contraseña<strong class="red"> * </strong></label>
+            <input type="password" class="form-control inputsito input" formControlName="password" #password required id="password" [ngClass]="{'is-invalid': miFormulario.controls['password'].errors && miFormulario.controls['password'].touched}">
+            <span class="form-text text-danger letra3" *ngIf="campoNoValido('password')">
+                   La contraseña debe ser mayor de 6 caracteres
+               </span>
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label for="inputState" class="form-label letra">Correo electrónico<strong class="red"> * </strong></label>
+            <input type="text" class="form-control inputsito input" formControlName="correo" #correo required id="correo" [ngClass]="{'is-invalid': miFormulario.controls['correo'].errors && miFormulario.controls['correo'].touched}">
             <span class="form-text text-danger letra3" *ngIf="campoEmailEsValido()">
-                    Debe ingresar un coreo válido
-            </span>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <p></p>
-        <label for="inputZip" class="form-label letra">Los datos ingresados se utilizaran 
-          para futuras consultas, fines descritos en las politicas de privacidad de la umss respaldando
-        la seguridad, integridad de los datos y otros</label>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label for="inputCity" class="form-label letra">Repetir contraseña<strong class="red"> * </strong></label>
-            <input type="password" class="form-control inputsito" formControlName="password2" 
-            #password2 required id ="password2"
-            [ngClass]="{'is-invalid': miFormulario.controls['password2'].errors && miFormulario.controls['password2'].touched}">
-           <span class="form-text text-danger letra3" *ngIf="!passwordsMatch()" >
-             No coincide las contraseñas
-         </span>
-    </div>
-    <!--                  -->
-    <div class="col-md-4">
-        <label for="inputState" class="form-label letra">Número de celular<strong class="red"> * </strong></label>
-            <input type="text" class="form-control inputsito" formControlName="celular"
-            #celular required id ="celular"
-            [ngClass]="{'is-invalid': miFormulario.controls['celular'].errors && miFormulario.controls['celular'].touched}">
+                        Debe ingresar un correo válido
+                </span>
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label for="inputZip" class="form-label letra input text-center">Los datos ingresados se utilizaran 
+              para fines descritos en las políticas de privacidad de la UMSS</label>
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label for="inputCity" class="form-label letra">Repetir contraseña<strong class="red"> * </strong></label>
+            <input type="password" class="form-control inputsito input" formControlName="password2" #password2 required id="password2" [ngClass]="{'is-invalid': miFormulario.controls['password2'].errors && miFormulario.controls['password2'].touched}">
+            <span class="form-text text-danger letra3" *ngIf="!passwordsMatch()">
+                 No coincide las contraseñas
+             </span>
+        </div>
+        <!--                  -->
+        <div class="col-md-4">
+            <label for="inputState" class="form-label letra">Número de celular<strong class="red"> * </strong></label>
+            <input type="text" class="form-control inputsito input" formControlName="celular" #celular required id="celular" [ngClass]="{'is-invalid': miFormulario.controls['celular'].errors && miFormulario.controls['celular'].touched}">
             <span class="form-text text-danger letra3" *ngIf="campoNoValido('celular')">
-                    Numero de celular no valido
-            </span>
-    </div>
-    <!--                  -->
-    <div class="col-md-4 d-grid gap-2">
-        <p></p>
-            <button type="submit" class="btn btn-primary butonsito letra">Registrar usuario</button>
-    </div>
-    <!--             -->
-</form> 
-<!--<button type="submit" class="btn btn-primary  " (click)="Mostrar()">Probando</button>-->
+                        Número de celular no válido
+                </span>
+        </div>
+        <!--                  -->
+        <div class="col-md-4 d-grid gap-2">
+            <p></p>
+            <button type="submit" class="btn btn-primary butonsito letra2 input">Registrar usuario</button>
+            <button id="botonsito" class="btn btn-secondary butonsito letra2 input" [routerLink]="['/tablero']">Cancelar</button>
+        </div>
+        <!--             -->
+    </form>
+    <!--<button type="submit" class="btn btn-primary  " (click)="Mostrar()">Probando</button>-->
+</div>

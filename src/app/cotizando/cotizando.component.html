@@ -1,0 +1,191 @@
+<app-navbar>
+</app-navbar>
+
+<div class="solicitud-heading">
+    <h1>Detalles de la solicitud</h1>
+</div>
+
+<div class="solicitud-body">
+
+    <div class="headline-left">
+        <h4>Estado: </h4>
+        <p>{{unaSolicitud.estado}}</p>
+    </div>
+
+    <div class="headline">
+        <h4>Tipo de solicitud: </h4>
+        <p>{{unaSolicitud.tipo}}</p>
+    </div>
+
+    <div class="headline-left">
+        <h4>Monto estimado: </h4>
+        <p>{{unaSolicitud.montoestimado}}</p>
+    </div>
+
+    <div class="headline">
+        <h4>Responsable: </h4>
+        <p>{{unaSolicitud.responsable}}</p>
+    </div>
+
+    <div class="headline-left">
+        <h4>Fecha de emision: </h4>
+        <p>{{unaSolicitud.created_at}}</p>
+    </div>
+
+    <div class="headline">
+        <h4>Unidad: </h4>
+        <p>{{unaSolicitud.unidad_nombre}}</p>
+    </div>
+
+</div>
+
+<div class="solicitud-items">
+    <div>
+        <h4 style="font-weight: bold;">Items({{unaSolicitud.items.length}})</h4>
+
+    </div>
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Item</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Precio estimado</th>
+
+            </tr>
+        </thead>
+        <!---->
+
+        <tbody>
+            <tr *ngFor="let item of unaSolicitud.items; index as i">
+
+                <td>{{item.pivot.item_id}} </td>
+                <td>{{item.pivot.nombre}} </td>
+                <td>{{item.pivot.descrip}} </td>
+                <td>{{item.pivot.cantidad}} </td>
+                <td>{{item.pivot.precio}} </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+    <div class="d-flex derechaxx">
+        <button id="Generar" (click)=" abrirDialogo()" class="btn-primary input boton44 generarCotizacion">Generar cotizaciones</button> &nbsp;
+        <button (click)="mostrarCotizaciones()" id="generar-cuadro-comparativo" class="btn-primary input boton44">{{mostrarCotizacion ? "Generar cuadro comparativo":"Ocultar cuadro comparativo"}}</button> &nbsp;
+        <button id="Registrar respuesta de solicitudes" class="btn-primary boton44" (click)=" abrirDialogo1()">Registrar cotizaciones</button>
+
+    </div>
+</div>
+
+<div class="derecha">
+    <button id="Cancelar" [routerLink]="['/cotizacion']" class="btn-secondary">Volver atrás</button>
+</div>
+<ng-container *ngIf="visible">
+    <div class="bg-white shadow-sm p-3">
+
+        <!--//EMPIEZA LA TABLA DE Cotizaciones-->
+        <div style="max-width:750px;padding:20px;margin: 5px auto;">
+            <!-- Master Toggle Button -->
+            <div style="text-align: end;padding: 10px;">
+                <a mat-raised-button href="javascript:void(0)" (click)="toggleTableRows()" color="primary">Mostrar/Ocultar items</a>
+            </div>
+
+            <!-- INITS THE TABKE HEADER -->
+            <mat-radio-group [(ngModel)]="selectedElement">
+
+                <table mat-table [dataSource]="dataToShow" multiTemplateDataRows>
+
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> Empresa </th>
+                        <td [ngClass]="{
+                  'positive' : element.total == MinValuated       
+               }" mat-cell *matCellDef="let element"> {{element.empresa.nombreemp}} </td>
+                    </ng-container>
+
+                    <!--
+                the next TWO 
+              -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td [ngClass]="{
+                  'positive' : element.total == this.MinValuated
+
+               }" mat-cell *matCellDef="let element"> </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="age">
+                        <th mat-header-cell *matHeaderCellDef> Plazo </th>
+                        <td [ngClass]="{
+                  'positive' : element.total == this.MinValuated
+
+               }" mat-cell *matCellDef="let element">{{element.plazo_de_entrega}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="address">
+                        <th mat-header-cell *matHeaderCellDef> Monto </th>
+                        <td [ngClass]="{
+                  'positive' : element.total == this.MinValuated                  
+               }" mat-cell *matCellDef="let element"> {{element.total}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                        <td [ngClass]="{
+                  'positive': element.total == this.MinValuated                  
+               }" mat-cell *matCellDef="let element">
+                            <a mat-button href="javascript:void()" (click)="element.isExpanded = !element.isExpanded">Ver
+                    Items</a>
+                        </td>
+                    </ng-container>
+
+                    <!-- Selected Column -->
+                    <ng-container matColumnDef="selected">
+
+                        <th mat-header-cell *matHeaderCellDef> Elegir </th>
+                        <td [ngClass]="{'positive' : element.total == this.MinValuated }" mat-cell *matCellDef="let element">
+                            <mat-radio-button [value]="element"> {{element.empresa.nombreemp}}
+                            </mat-radio-button>
+                        </td>
+                    </ng-container>
+
+                    <!-- Template for details row -->
+                    <ng-container matColumnDef="expandedDetail">
+                        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsTable.length">
+
+                            <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
+                                <mat-list>
+                                    <div mat-subheader>Items cotizados: {{element.name}}</div>
+                                    <mat-list-item *ngFor="let subject of element.itemscot">
+                                        <div mat-line>ID: {{subject.id}} | Item: {{subject.nombre}} | Descripcion: {{subject.descripcion}} | Precio: {{subject.total}}</div>
+                                    </mat-list-item>
+                                </mat-list>
+                                <div mat-subheader>
+                                    Observaciones: {{element.observaciones}}
+                                    <a class="headline-left-a" href="{{'https://apiser-vicios.herokuapp.com'+element.cotizacion_pdf}}" target="_blank">VER PDF</a>
+                                </div>
+
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="columnsTable;sticky: true"></tr>
+                    <tr mat-row *matRowDef="let element; columns: columnsTable;" class="student-element-row" [class.student-expanded-row]="element.isExpanded"></tr>
+
+                    <!-- Extra row to show detail content column -->
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr>
+
+                </table>
+            </mat-radio-group>
+            <!-- fINISH THE TABLE  -->
+            <button (click)="elegirMejorOpcion()" mat-raised-button color="primary">Guardar eleccion</button>
+            <button style="margin-left: 8px;" (click)="writeinformecotizado(unaSolicitud)" [routerLink]="['/informe-cotizado/', unaSolicitud.id]" mat-raised-button color="primary">
+          <mat-icon style="font-size: 20px;" title="Redactar informe de rechazo">border_color</mat-icon> Generar informe cotizado</button>
+
+        </div>
+        <!--//TERMINA LA TABLA DE Cotizaciones-->
+    </div>
+
+</ng-container>

@@ -1,0 +1,12 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div>
+
+    <app-administrador *ngIf="privilegios_json.admin"></app-administrador><br>
+    <app-jefe *ngIf="privilegios_json.jefe"></app-jefe>
+    <app-cotizador *ngIf="privilegios_json.cotizador"></app-cotizador>
+    <app-administrativos *ngIf="privilegios_json.usuario"></app-administrativos>
+</div>

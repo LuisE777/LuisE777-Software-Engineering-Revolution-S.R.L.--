@@ -1,0 +1,56 @@
+.input {
+    width: 90%;
+}
+
+.colum {
+    width: 16%;
+}
+
+.input3 {
+    width: 20%;
+    height: 20%;
+}
+
+.margen {
+    margin-top: 10px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+
+.margen2 {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+.boton {
+    margin-right: 10px;
+}
+
+thead {
+    background-color: #3f51b5;
+    color: white;
+}
+
+.tabla {
+    margin: auto;
+    width: 80% !important;
+}
+
+td {
+    background-color: white !important;
+}
+
+::ng-deep .mat-form-field-flex>.mat-form-field-infix {
+    padding: 0.4em 0px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-label {
+    margin-top: -15px;
+}
+
+::ng-deep label.ng-star-inserted {
+    transform: translateY(-0.59375em) scale(.75) !important;
+}

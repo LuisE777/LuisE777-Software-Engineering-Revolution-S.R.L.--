@@ -1,0 +1,142 @@
+<app-navbar>
+</app-navbar>
+
+<!-- STARTS -->
+
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<!-- finish -->
+
+<div class="sidecontent">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7 bg-comp p-4">
+                <h3 class="fs-3 fw-bold">REGISTRO DE EMPRESAS</h3>
+                <div class="">
+                    <form [formGroup]="angForm" (ngSubmit)="submitForm()">
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="nombre" class="form-label">Nombre empresa<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="nombre" placeholder="Ingrese..." formControlName="nombre" #nombre required [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['nombre'].errors">
+                                        <span class="letra1">Nombre es obligatorio, no debe tener números. <br></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="nit" class="form-label">NIT<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="nit" placeholder="Ingrese..." pattern="[0-9]{1,9}" formControlName="nit" #nit required [ngClass]="{'is-invalid': angForm.controls['nit'].errors && angForm.controls['nit'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['nit'].invalid && (angForm.controls['nit'].dirty || angForm.controls['nit'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['nit'].errors">
+                                        <span class="letra1">NIT es obligatorio, no debe tener letras, máximo 9 dígitos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="repLegal" class="form-label">Representante Legal<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="repLegal" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" formControlName="repLegal" #facultad required [ngClass]="{'is-invalid': angForm.controls['repLegal'].errors && angForm.controls['repLegal'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['repLegal'].invalid && (angForm.controls['repLegal'].dirty || angForm.controls['repLegal'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['repLegal'].errors">
+                                        <span class="letra1">Representante Legal es obligatorio, no debe tener números. <br></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="rubro" class="form-label">Rubro<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="rubro" placeholder="Ingrese..." pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" formControlName="rubro" #rubro required [ngClass]="{'is-invalid': angForm.controls['rubro'].errors && angForm.controls['rubro'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['rubro'].invalid && (angForm.controls['rubro'].dirty || angForm.controls['rubro'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['rubro'].errors">
+                                        <span class="letra1">Rubro es obligatorio, no debe tener números. <br></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="direccion" class="form-label">Dirección<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="direccion" placeholder="Ingrese..." formControlName="direccion" #direccion required [ngClass]="{'is-invalid': angForm.controls['direccion'].errors && angForm.controls['direccion'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['direccion'].invalid && (angForm.controls['direccion'].dirty || angForm.controls['direccion'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['direccion'].errors">
+                                        <span class="letra1">Dirección es obligatorio.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="telefono" placeholder="Ingrese..." formControlName="telefono" #telefono required [ngClass]="{'is-invalid': angForm.controls['telefono'].errors && angForm.controls['telefono'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['telefono'].invalid && (angForm.controls['telefono'].dirty || angForm.controls['telefono'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['telefono'].errors">
+                                        <span class="letra1">Teléfono es obligatorio, no debe tener letras.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!---->
+                        <div class="row align-items-center mb-3">
+                            <div class="col-10 col-md-4">
+                                <label for="correo" class="form-label">Correo <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-10 col-md-6">
+                                <input type="text" class="form-control letra2" id="correo" placeholder="Ingrese..." formControlName="correo" #correo required [ngClass]="{'is-invalid': angForm.controls['correo'].errors && angForm.controls['correo'].touched}">
+                                <!-- error -->
+                                <div *ngIf="angForm.controls['correo'].invalid && (angForm.controls['correo'].dirty || angForm.controls['correo'].touched)" class="text-danger font-weight-light">
+                                    <div class="fs-6" *ngIf="angForm.controls['correo'].errors">
+                                        <span class="letra1">Correo es obligatorio</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-evenly">
+                            <button type="submit" class="btn btn-primary letra2">
+                            Guardar
+                        </button>
+                            <button type="button" class="btn btn-secondary letra2" (click)="goBack()">Cancelar</button>
+                        </div>
+                        <!---->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

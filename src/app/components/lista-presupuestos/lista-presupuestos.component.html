@@ -1,0 +1,68 @@
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="tabla margen" id="tabla">
+        <h3 class="fs-3 fw-bold text-center">Lista de presupuestos</h3>
+        <div class="d-flex">
+            <p class="text-center margen2">Buscar:</p>
+            <input type="text" class="form-control input3" name="filterPost" [(ngModel)]="filterPost">
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Unidad</th>
+                    <th scope="col">Presupuesto</th>
+                    <th scope="col">Gestion</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let presupuesto of presupuestoService.presupuestos | paginate: { itemsPerPage: 10, currentPage: p } |filter6 : filterPost; let i = index ">
+                    <td scope="col">{{presupuesto.nombre}}</td>
+                    <td scope="col">{{presupuesto.presupuesto}}</td>
+                    <td scope="col">{{presupuesto.gestion}}</td>
+                    <td scope="col">
+                        <button class="btn btn-edit boton" title="Editar presupuesto" data-bs-toggle="modal" data-bs-target="#edit-pres" (click)="seleccionarPresupuesto(presupuesto)">
+                                    <i class="material-icons btn-small">edit</i>
+                                </button>
+                        <button class="btn btn-edit boton" title="Eliminar rol" (click)="eliminarPresupuesto(presupuesto, i)">
+                                    <i class="material-icons btn-small">delete</i>
+                                </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="edit-pres" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel">Editar presupuesto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="form-label letra">Presupuesto<strong style="color: red;"> * </strong></label> <br>
+                        <mat-form-field [style.width.px]=450 appearance="outline">
+                            <input type="number" id="nom-rol" matInput [formControl]="presupuesto" required autofocus>
+                            <mat-error *ngIf="presupuesto.invalid">{{ getErrorMessage()}}</mat-error>
+                            <span matPrefix>Bs.</span>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" (click)="editarPresupuesto()" data-bs-dismiss="modal">Actualizar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

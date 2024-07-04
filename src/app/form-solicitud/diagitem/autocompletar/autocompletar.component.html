@@ -1,13 +1,12 @@
-<form >
-  <mat-form-field [style.width.%]="90" >
-    <input type="text" placeholder="Ingrese nombre de item" [formControl]="myControl" matInput [matAutocomplete]="auto"
-      (focusout)="NotificarEleccion()" [(ngModel)]="nameit">
-      <!---NAMEIT HAS THE NAME of the editable table's row -->
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nombre">
-        {{option.nombre}}
-      </mat-option>
-    </mat-autocomplete>
+<form>
+    <mat-form-field [style.width.%]="90">
+        <input id="nombreitem" type="text" placeholder="Seleccione item" [formControl]="myControl" matInput [matAutocomplete]="auto" (focusout)="NotificarEleccion()" [(ngModel)]="nameit" required>
+        <!---NAMEIT HAS THE NAME of the editable table's row -->
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nomitem">
+                {{option.nomitem}}
+            </mat-option>
+        </mat-autocomplete>
 
-  </mat-form-field>
+    </mat-form-field>
 </form>

@@ -1,0 +1,31 @@
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th>Item Area Superior</th>
+            <th>Importe</th>
+            <th>Opcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let det of detalle ">
+            <td scope="col"> {{det.nomitemSup}}</td>
+            <td class="text-center " scope="col"> {{det.montoasig}}</td>
+            <div class="centro">
+                <button (click)="removeItem(det)" class=" btn btn-danger centro" title="Eliminar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </tr>
+        <tr>
+            <td class="table-primary pp">Total presupuesto actual:</td>
+            <td class="table-primary text-center pp">{{importe}}</td>
+        </tr>
+        <tr>
+            <td class="table-primary pp">Total tope presupuestario:</td>
+            <td class="table-primary text-center pp">{{importe3}}</td>
+        </tr>
+    </tbody>
+
+</table>

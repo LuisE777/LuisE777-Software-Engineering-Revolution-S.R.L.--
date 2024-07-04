@@ -1,0 +1,32 @@
+.visi {
+    visibility: hidden;
+}
+
+
+/*INIT*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    float: right;
+    height: 100vh;
+}
+
+.margen {
+    margin-top: 20px;
+}
+
+
+/*END*/
+
+.cuadrado {
+    width: 32.4%;
+}

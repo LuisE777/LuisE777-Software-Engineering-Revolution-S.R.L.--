@@ -5,34 +5,32 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Item } from '../../form-solicitud/item';
 import { NoticeallService } from './noticeall.service';
 
-
-
 @Component({
   selector: 'app-diagitem',
   templateUrl: './diagitem.component.html',
   styleUrls: ['./diagitem.component.css']
 })
 export class DiagitemComponent implements OnInit {
-
-  constructor(
-    public dialogRef: MatDialogRef<DiagitemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Item,) { //Anytime pass the Word.value
-      console.log(data);
+  constructor(public dialogRef: MatDialogRef<DiagitemComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Item, public recivedName: NoticeallService) { //Anytime pass the Word.value
+      //console.log(data);
     }
 
   ngOnInit(): void {
-        
+    this.recivedName.nombreItem='';
   }
-  cancelar() {
-    this.dialogRef.close();
+  cancelar() {    
+    this.dialogRef.close();    
   }
-  
+
   message:string;
-  
+  Checker:string;
+
   receiveMessage($event) {
     this.message = $event
-    console.log('Aaaaaaaa',this.message);
+    this.recivedName.nombreItem=this.message;
+    console.log('Aaaaaaaa',this.recivedName.nombreItem);
   }
-  
+
 }
 

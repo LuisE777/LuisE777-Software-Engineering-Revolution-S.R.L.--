@@ -1,0 +1,131 @@
+/*Solicitud body*/
+
+.headline h4,
+.headline p {
+    display: inline;
+    vertical-align: top;
+    line-height: 28px;
+}
+
+.headline h4 {
+    font-weight: bold;
+}
+
+.margen {
+    margin-left: 240px;
+    margin-right: 110px;
+}
+
+.headline-left h4 {
+    display: inline;
+    vertical-align: top;
+    line-height: 28px;
+}
+
+.headline-left-a {
+    text-align: right;
+    float: right;
+    position: relative;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    float: left;
+}
+
+.headline-left {
+    float: right;
+}
+
+.headline-left p {
+    display: inline;
+    vertical-align: top;
+    line-height: 28px;
+}
+
+.headline-left h4 {
+    font-weight: bold;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 5px auto;
+}
+
+.solicitud-heading {
+    font-size: 15px;
+    max-width: 1024px;
+    margin: 5px auto;
+}
+
+.redactar-rechazo {
+    font-size: 15px;
+    max-width: 1024px;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+.solicitud-body {
+    background-color: #A9ECA6;
+    font-size: 15px;
+    max-width: 1024px;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+.solicitud-nocotz {
+    background-color: orange;
+    font-size: 15px;
+    max-width: 1024px;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+.cotizacion-body {
+    font-size: 15px;
+    max-width: 1024px;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+.info-sender {
+    font-size: 15px;
+    max-width: 1024px;
+    margin: 5px auto;
+}
+
+.cotizador-info {
+    background-color: #DCE1EC;
+    font-size: 15px;
+    max-width: 1024px;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+
+/*CENTER THE BACK BUTTON*/
+
+.lastitem {
+    height: 30px;
+    position: relative;
+}
+
+.derecha {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.informe {
+    float: left;
+    width: 100%;
+    min-height: 75px;
+    outline: none;
+    resize: none;
+}
+
+.positive {
+    background-color: #aac4ca;
+}

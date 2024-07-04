@@ -1,0 +1,106 @@
+<div class="">
+    <div class="">
+        <form  [formGroup]="angForm" (ngSubmit)="submitForm()">
+            <div class="col-12 row align-items-center mb-3">
+                <div class="col-12 col-md-3 col-lg-5">
+                    <label for="nombre" class="form-label">Nombre<span
+                            class="text-danger">*</span></label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7">
+                    <input type="text" class="form-control letra3" id="nombre" placeholder="Ingrese..."
+                        formControlName="nombre" #nombre required
+                        pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                    [ngClass]="{'is-invalid': angForm.controls['nombre'].errors && angForm.controls['nombre'].touched}">
+                    <!-- error -->
+                    <div *ngIf="angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)" class="text-danger font-weight-light">
+                        <div *ngIf="angForm.controls['nombre'].errors">
+                            El nombre es obligatorio. <br>
+                            No debe tener números.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 row align-items-center mb-3">
+                <div class="col-12 col-md-3 col-lg-5">
+                    <label for="descripcion" class="form-label">Descripcion <span
+                            class="text-danger">*</span></label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7">
+                    <input type="text" class="form-control letra3" id="descripcion" placeholder="Ingrese..."
+                        formControlName="descripcion" #descripcion required
+                        pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}"
+                    [ngClass]="{'is-invalid': angForm.controls['descripcion'].errors && angForm.controls['descripcion'].touched}">
+                    <!-- error -->
+                    <div *ngIf="angForm.controls['descripcion'].invalid && (angForm.controls['descripcion'].dirty || angForm.controls['descripcion'].touched)" class="text-danger font-weight-light">
+                        <div *ngIf="angForm.controls['descripcion'].errors">
+                            El nombre es obligatorio. <br>
+                            No debe tener números.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 row align-items-center mb-3">
+                <div class="col-12 col-md-3 col-lg-5">
+                    <label for="cantidad" class="form-label">Cantidad <span
+                            class="text-danger">*</span></label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7">
+                    <input type="number" class="form-control letra3" id="cantidad" placeholder="Ingrese..."
+                        formControlName="cantidad" #cantidad required
+                        pattern="[0-9]{1,100}"
+                    [ngClass]="{'is-invalid': angForm.controls['cantidad'].errors && angForm.controls['cantidad'].touched}">
+                    <!-- error -->
+                    <div *ngIf="angForm.controls['cantidad'].invalid && (angForm.controls['cantidad'].dirty || angForm.controls['cantidad'].touched)" class="text-danger font-weight-light">
+                        <div *ngIf="angForm.controls['cantidad'].errors">
+                            El nombre es obligatorio.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 row align-items-center mb-3">
+                <div class="col-12 col-md-3 col-lg-5">
+                    <label for="precioUnitario" class="form-label">Precio Unitario <span
+                            class="text-danger">*</span></label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7">
+                    <input type="number" class="form-control letra3" id="precioUnitario" placeholder="Ingrese..."
+                        formControlName="precioUnitario" #precioUnitario required
+                        pattern="[0-9]{1,100}"
+                    [ngClass]="{'is-invalid': angForm.controls['precioUnitario'].errors && angForm.controls['precioUnitario'].touched}">
+                    <!-- error -->
+                    <div *ngIf="angForm.controls['precioUnitario'].invalid && (angForm.controls['precioUnitario'].dirty || angForm.controls['precioUnitario'].touched)" class="text-danger font-weight-light">
+                        <div *ngIf="angForm.controls['precioUnitario'].errors">
+                            El nombre es obligatorio.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 row align-items-center mb-3">
+                <div class="col-12 col-md-3 col-lg-5">
+                    <label for="total" class="form-label">Total <span
+                            class="text-danger">*</span></label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7">
+                    <input type="number" class="form-control letra3" id="total" placeholder="Ingrese..."
+                        formControlName="total" #total required
+                        pattern="[0-9]{1,100}"
+                    [ngClass]="{'is-invalid': angForm.controls['total'].errors && angForm.controls['total'].touched}">
+                    <!-- error -->
+                    <div *ngIf="angForm.controls['total'].invalid && (angForm.controls['total'].dirty || angForm.controls['total'].touched)" class="text-danger font-weight-light">
+                        <div *ngIf="angForm.controls['total'].errors">
+                            El nombre es obligatorio.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-around">
+                <button class="btn btn-primary">
+                    Añadir
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

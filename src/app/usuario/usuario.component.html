@@ -1,0 +1,52 @@
+<!--app-navbar>
+</app-navbar-->
+
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <h2 class="text-center py-8"><b>USUARIO DEL SISTEMA</b>
+        <h3>
+            <p>MENU DE FUNCIONES</p>
+        </h3>
+    </h2>
+    <div class="d-flex text-center">
+        <div class=" col-md-4">
+            &nbsp;
+            <a [routerLink]="['/form-solicitud']" class="list-group-item list-group-item-action text-center"><b>Realizar solicitudes de cotizacion</b><p>Permite realizar la solicitud para compra de bienes y servicios</p></a> &nbsp;
+        </div>
+        <div class=" col-md-4">
+            &nbsp;
+            <a [routerLink]="['/registrounidades']" class="list-group-item list-group-item-action text-center"><b>Registro de unidades</b><p>Registro de nuevas unidades de gasto</p></a> &nbsp;
+        </div>
+        <div class=" col-md-4">
+            &nbsp;
+            <a [routerLink]="['/registroitem']" class="list-group-item list-group-item-action text-center"><b>Agregar items específicos</b><p>Permite agregar nuevos items de area específica o inferior</p></a> &nbsp;
+        </div>
+    </div>
+
+    <div class="d-flex text-center">
+        <div class="col-md-4 py-4">
+            <a [routerLink]="['/solicitudes']" class="list-group-item list-group-item-action text-center"><b>Solicitudes</b><p>Permite ver las solicitudes para su rechazo o aceptación</p></a>
+        </div>
+        <div class="col-md-4 py-4">
+            <a [routerLink]="['/misSolicitudes']" class="list-group-item list-group-item-action text-center"><b>Mis solicitudes</b><p>Permite ver las solicitudes que realizo</p></a>
+        </div>
+        <div class="col-md-4 py-4">
+            <a [routerLink]="['/registroitemsup']" class="list-group-item list-group-item-action text-center"><b>Agregar items generales</b><p>Permite agregar nuevos items de area general o superior</p></a>
+        </div>
+    </div>
+    <div class="d-flex text-center">
+        <div class="col-md-4 py-4">
+            <a [routerLink]="['/cotizacion']" class="list-group-item list-group-item-action text-center"><b>Cotizaciones</b><p>Permite gestionar el proceso de cotización, para solicitudes aceptadas</p></a>
+        </div>
+
+    </div>
+
+    <div *ngIf="validarFecha()">
+        <div class="col-md-4 py-4" style="position: relative;">
+            <a [routerLink]="['/itemSupPresupuesto']" matTooltip="El registro de presupuesto esta disponible por tiempo limitado" class="list-group-item list-group-item-action text-center fecha"><b>Agregar presupuesto a items generales</b><i class="material-icons btn-small">warning</i><p>Permite agregar presupuesto a items de area general o superior previamente registrados</p></a>
+        </div>
+    </div>
+</div>

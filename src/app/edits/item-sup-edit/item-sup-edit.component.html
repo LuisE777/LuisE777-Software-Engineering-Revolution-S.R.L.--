@@ -1,0 +1,56 @@
+<app-navbar>
+</app-navbar>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 bg-comp p-3">
+            <h3 class="fs-3 fw-bold">EDITAR ITEM DE ÁREA GENERAL</h3>
+            <div class="">
+                <form [formGroup]="angForm" (ngSubmit)="submitForm()">
+                    <div class="row align-items-center mb-3">
+                        <div class="col-10 col-md-4">
+                            <label for="nomitemSup" class="form-label">Nombre de Item <span class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input type="text" class="form-control letra3" id="nomitemSup" placeholder="Ingrese..." formControlName="nomitemSup" #nomitemSup required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': angForm.controls['nomitemSup'].errors && angForm.controls['nomitemSup'].touched}">
+                            <!-- error -->
+                            <div *ngIf="angForm.controls['nomitemSup'].invalid && (angForm.controls['nomitemSup'].dirty || angForm.controls['nomitemSup'].touched)" class="text-danger font-weight-light">
+                                <div class="fs-6 letra3" *ngIf="angForm.controls['nomitemSup'].errors">
+                                    <span class="letra3">
+                                    El Nombre es obligatorio. <br>
+                                    No debe tener números. <br>
+                                    Debe ser mayor a 3 letras.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-3">
+                        <div class="col-10 col-md-4">
+                            <label for="descripSup" class="form-label">Descripción <span class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input type="text" class="form-control letra3" id="descripSup" placeholder="Ingrese..." formControlName="descripSup" #descripSup required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" [ngClass]="{'is-invalid': angForm.controls['descripSup'].errors && angForm.controls['descripSup'].touched}">
+                            <!-- error -->
+                            <div *ngIf="angForm.controls['descripSup'].invalid && (angForm.controls['descripSup'].dirty || angForm.controls['descripSup'].touched)" class="text-danger font-weight-light ">
+                                <div class="fs-6 letra3" *ngIf="angForm.controls['descripSup'].errors">
+                                    <span class="letra3">
+                                    Descripción es obligatorio. <br>
+                                    No debe tener números.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-danger">Los campos con (*) son obligatorios.</p>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
+                        <!--<button type="submit" class="btn btn-primary" [ngClass]="{disabled: !angForm.valid}">-->
+                        <button type="submit" class="btn btn-primary letra3" [ngClass]="{disabled: !angForm.valid}" ls>
+              Guardar
+            </button>
+                        <button type="button" (click)="goBack()" class="btn btn-secondary letra3">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

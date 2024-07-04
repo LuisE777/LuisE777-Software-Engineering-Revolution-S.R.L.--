@@ -1,0 +1,36 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#conv-moneda">
+    Converitr moneda
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" id="conv-moneda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">{{ modal.titulo }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <mat-form-field [style.width.px]=327 appearance="outline">
+                        <mat-label>{{ modal.label }}</mat-label>
+                        <input id="dolares" matInput type="number" [formControl]="dolares" required>
+                        <mat-error *ngIf="dolares.invalid">{{ getErrorMessage() }}</mat-error>
+                    </mat-form-field>
+                    <!--button type="button" class="btn btn-light">Cambiar</button-->
+                    <button style="margin-left: 10%;" class="btn btn-danger btn-light" title="Cambiar conversion">
+                    <i class="material-icons btn-small" (click)="cambiar()">swap_horiz</i>
+                </button>
+                </form>
+                <div>
+                    <h3>Valor convertido: {{ valorConvertido() }}</h3>
+                    <h5 style="margin-top: -20px;">🛈 Tasa de cambio actual: {{ modal.tasa }} </h5>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

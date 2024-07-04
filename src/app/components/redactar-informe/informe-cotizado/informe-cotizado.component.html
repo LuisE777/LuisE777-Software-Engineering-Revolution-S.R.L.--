@@ -1,0 +1,139 @@
+<app-navbar>
+</app-navbar>
+
+<div id="massa-id">
+    <div *ngIf="hasCOTS" class="solicitud-heading">
+        <h1>Proposito: Informe de solicitud cotizada</h1>
+
+    </div>
+
+    <div *ngIf="!hasCOTS" class="solicitud-heading">
+        <h1>Proposito: Informe de solicitud no cotizada</h1>
+    </div>
+
+    <div class="redactar-rechazo">
+
+        <div class="headline">
+            <h4>Estimado(a): </h4>
+            <p>{{unaSolicitud.responsable}}</p>
+        </div>
+
+        <div class="informe">
+
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Redactar informe</mat-label>
+                <textarea matInput cols="30" rows="5" placeholder="Detalle las razones del rechazo de la solicitud" [(ngModel)]="role" [maxLength]="maxChars"> </textarea>
+
+                <label> Characteres restantes: {{role.length}}/{{maxChars}}</label>
+            </mat-form-field>
+
+        </div>
+
+        <div class="headline">
+            <h4>Este informe se guaradara entre los archivos de la unidad: </h4>
+            <p>{{unaSolicitud.unidad_nombre}}</p>
+        </div>
+
+        <div class="headline">
+            <h4 *ngIf="hasCOTS">Se listan las cotizaciones recividas/registradas y los items ofertados por empresa. </h4>
+        </div>
+
+    </div>
+    <div class="solicitud-heading">
+        <h1>Solicitud y cotizacion adjuntas</h1>
+    </div>
+    <div [ngClass]="{'solicitud-nocotz': recivedCotizacion.length  === 0 }" class="solicitud-body">
+
+        <div class="headline-left">
+            <h4>Estado: </h4>
+            <p>{{unaSolicitud.estado}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Tipo de solicitud: </h4>
+            <p>{{unaSolicitud.tipo}}</p>
+        </div>
+
+        <div class="headline-left">
+            <h4>Monto estimado: </h4>
+            <p>{{unaSolicitud.montoestimado}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Responsable: </h4>
+            <p>{{unaSolicitud.responsable}}</p>
+        </div>
+
+        <div class="headline-left">
+            <h4>Fecha de emision: </h4>
+            <p>{{unaSolicitud.created_at}}</p>
+        </div>
+
+        <div class="headline">
+            <h4>Unidad: </h4>
+            <p>{{unaSolicitud.unidad_nombre}}</p>
+        </div>
+    </div>
+
+    <div class="cotizacion-body">
+        <table id="solitspen" class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="background-color: rgb(226, 231, 231); 
+
+                border-radius:20px 0px 0px 0px;">Empresa</th>
+                    <th style="background-color: rgb(226, 231, 231);"></th>
+                    <th style="background-color: rgb(226, 231, 228);">Total</th>
+                    <th style="background-color: rgb(226, 231, 231);"> Plazo de entrega</th>
+                    <th style="background-color: rgb(226, 231, 231);                
+                border-radius:0px 20px 0px 0px;">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solicitud of recivedCotizacion">
+                    <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }"> {{solicitud.empresa.nombreemp}} </td>
+                    <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }">-----------------------</td>
+                    <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }"> {{solicitud.total}} </td>
+                    <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }"> {{solicitud.plazo_de_entrega}} </td>
+                    <td [ngClass]="{'positive': solicitud.eleccion === 'Si' }">{{solicitud.observaciones}} </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <h4 *ngIf="!hasCOTS">No se han encontrado cotizaciones</h4>
+    </div>
+
+    <div class="cotizador-info">
+        <div class="headline-left">
+            <h4>Telefono: </h4>
+            <p>4859950</p>
+        </div>
+
+        <div class="headline">
+            <h4>Encargado: </h4>
+            <p>{{cotizador}}</p>
+        </div>
+
+        <div class="headline-left">
+            <h4>Correo: </h4>
+            <p>CENTRO-DE-COTIZACIONES@UMSS.EDU.BO</p>
+        </div>
+
+        <div class="headline">
+            <h4>Rol: </h4>
+            <p>{{rol}}</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="info-sender">
+    <button style="width: 35%;" (click)="enviarInforme()" mat-raised-button color="primary">Exportar y enviar informe</button>
+
+</div>
+
+<div class="lastitem">
+    <div class="derecha">
+        <button id="atras" (click)="goBack()" class="btn-secondary">Volver atrás</button>
+    </div>
+</div>

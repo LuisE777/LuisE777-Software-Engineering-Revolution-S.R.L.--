@@ -1,0 +1,85 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.content-body {
+    background-color: #f1eded;
+    font-size: 15px;
+    max-width: 1150px;
+    padding: 20px;
+    margin: auto;
+}
+
+.table-body {
+    background-color: #bedfe5;
+    font-size: 15px;
+    max-width: 1024px;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+.heading {
+    font-size: 20px;
+    max-width: 1024px;
+    margin: 5px auto;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.Titulo {
+    width: 80%;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    color: #4E3883;
+}
+
+.centre {
+    text-align: center !important;
+}
+
+
+/*INIT*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    float: right;
+    height: 100vh;
+}
+
+.table-backs {
+    overflow: auto;
+    max-height: 500px;
+    width: 900px;
+    margin: auto;
+    border: 3px solid #4E3883;
+    padding: 10px;
+}
+
+.center-pinner {
+    display: flex;
+    justify-content: center;
+}

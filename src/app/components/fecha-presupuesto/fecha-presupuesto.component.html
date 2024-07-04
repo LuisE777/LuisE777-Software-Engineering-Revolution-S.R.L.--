@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="flexbox">
+        <h1 class=" fw-bold">HABILITAR UNA FECHA PARA EL REGISTRO DE PRESUPUESTOS</h1>
+        <form>
+            <h3>Periodo seleccionado: {{ actual() }}</h3>
+            <label class="form-label letra">Rango de fecha<strong class="red"> * </strong>(mm/dd/aaaa)</label> <br>
+            <mat-form-field [style.width.px]=327 appearance="outline">
+
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Fecha de apertura">
+                    <input matEndDate formControlName="end" placeholder="Fecha de cierre">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <mat-error *ngIf="range.controls.start.invalid && range.controls.end.valid">Fecha de apertura invalida</mat-error>
+                <mat-error *ngIf="range.controls.end.invalid && range.controls.start.valid">Fecha de cierre invalida</mat-error>
+                <mat-error *ngIf="range.controls.end.invalid && range.controls.start.invalid">Fechas invalidas</mat-error>
+            </mat-form-field>
+        </form>
+
+    </div>
+
+    <div class="text-center">
+        <button class="boton" id="submit" mat-raised-button color="primary" style="background-color: #003975;" type="submit" (click)="guardar()">Guardar</button>
+        <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button color="primary" routerLink="/tablero">Cancelar</button>
+    </div>
+</div>

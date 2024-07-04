@@ -1,59 +1,120 @@
-<!--div class="tabla">
-    <h1>Solicitudes de cotizacion</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Operacion</th>
-            </tr>               
-        </thead>
-        <tbody>
-            <tr *ngFor="let solicitud of solicitudes">
-                <td> {{solicitud.nombre}} </td>
-                <td> {{solicitud.cantidad}} </td>
-                <td> {{solicitud.descripcion}} </td>
-                <td> {{solicitud.precio}} </td>
-                <td>
-                    <button class="btn btn-success boton">
-                        <i class="material-icons">check</i>
-                    </button>
-                    <button class="btn btn-danger btn-small boton">
-                        <i class="material-icons btn-small">delete</i>
-                    </button> 
-                </td>                  
-            </tr>
-        </tbody>
-    </table>
-</div-->
+<app-navbar>
+</app-navbar>
 
-<div class="tabla">
-    <h1>Solicitudes de cotizacion</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Responsable</th>
-                <th>Precio estimado</th>
-                <th>Estado</th>   
-                <th>Operacion</th>     
-            </tr>               
-        </thead>
-        <tbody>
-            <tr *ngFor="let solicitud of solicitudService.solicitudes">
-                <td> {{solicitud.responsable}} </td>
-                <td> {{solicitud.montoestimado}} </td>
-                <td> {{solicitud.estado}} </td>                                
-                <td align="center">
-                    <button class="btn btn-success boton">
+<!-- STARTS -->
+
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<!-- finish -->
+
+<div class="sidecontent">
+
+    <div class="tabla">
+        <h1 class="text-center margen5">Solicitudes</h1>
+        <div class="d-flex">
+            <p class="text-center margen2">Buscar:</p>
+
+            <input type="text" class="form-control input3" name="filterPost" [(ngModel)]="filterPost">
+        </div>
+        <h1>Solicitudes de cotizacion pendientes</h1>
+        <table id="solitspen" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Responsable</th>
+                    <th>Tipo</th>
+                    <th>Monto estimado</th>
+                    <th>Supera el monto</th>
+                    <th>Estado</th>
+                    <th>Operacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solicitud of solicitudService.solicitudes | paginate: { itemsPerPage: 10, currentPage: p }  |filter2 : filterPost">
+                    <td> {{solicitud.responsable}} </td>
+                    <td> {{solicitud.tipo}} </td>
+                    <td> {{solicitud.montoestimado}} </td>
+                    <td> {{solicitud.supera}} </td>
+                    <td> {{solicitud.estado}} </td>
+                    <td align="center">
+                        <button class="btn btn-success boton" title="Aceptar solicitud">
                         <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
                     </button>
-                    <button class="btn btn-danger btn-small boton">
+                        <button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
                         <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
-                    </button>   
-                </td>                  
-            </tr>
-        </tbody>
-    </table>
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tabla">
+        <h1>Solicitudes de cotizacion aceptadas</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Responsable</th>
+                    <th>Tipo</th>
+                    <th>Monto estimado</th>
+                    <th>Supera el monto</th>
+                    <th>Estado</th>
+                    <th>Operacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solicitud of solicitudService.solicitudesAprobadas | paginate: { itemsPerPage: 10, currentPage: p }  |filter2 : filterPost">
+                    <td> {{solicitud.responsable}} </td>
+                    <td> {{solicitud.tipo}} </td>
+                    <td> {{solicitud.montoestimado}} </td>
+                    <td>{{solicitud.supera}}</td>
+                    <td> {{solicitud.estado}} </td>
+                    <td align="center">
+                        <button class="btn btn-danger btn-small boton" title="Rechazar solicitud">
+                        <i class="material-icons btn-small" (click)="rechazarSolicitud(solicitud)">delete</i>
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="rejects" class="tabla">
+        <h1>Solicitudes de cotizacion rechazadas</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Responsable</th>
+                    <th>Tipo</th>
+                    <th>Monto estimado</th>
+                    <th>Supera el monto</th>
+                    <th>Estado</th>
+                    <th>Operacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solicitud of solicitudService.solicitudesRechazadas| paginate: { itemsPerPage: 10, currentPage: p } |filter2 : filterPost">
+                    <td> {{solicitud.responsable}} </td>
+                    <td> {{solicitud.tipo}} </td>
+                    <td> {{solicitud.montoestimado}} </td>
+                    <td> {{solicitud.supera}} </td>
+                    <td> {{solicitud.estado}} </td>
+                    <td align="center">
+                        <button class="btn btn-success boton" title="Aceptar solicitud">
+                        <i class="material-icons" (click)="aceptarSolicitud(solicitud)">check</i>
+                    </button>
+                        <button class="btn btn-edit boton" (click)="writeinformeRechazo(solicitud)" title="Redactar informe de rechazo" [routerLink]="['/redactar-informe/', solicitud.id]">                     
+                        <mat-icon>border_color</mat-icon>
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+        <div class="derecha">
+            <button id="Cancelar" (click)="goBack()" class="btn-secondary">Volver al menú</button>
+        </div>
+    </div>
 </div>

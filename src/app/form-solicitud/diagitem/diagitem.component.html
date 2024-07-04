@@ -1,35 +1,35 @@
 <div>
     <div>
-        <h1 mat-dialog-title>Ingrese los datos del item</h1>
+        <h1 mat-dialog-title>Añadir nuevo item</h1>
         <h4>Si no encuentra algun item. Asegure de registrarlo primero</h4>
         <div mat-dialog-content>
             <div>
-               
+
                 <app-autocompletar (sendToDialog)="receiveMessage($event)">
                 </app-autocompletar>
 
                 <mat-form-field style=" margin: auto; width: 80%">
-                    <input matInput [(ngModel)]="data.descrip" type="text"  placeholder="Ingrese descripción">
+                    <input id="descripcion" matInput [(ngModel)]="data.descrip" type="text" placeholder="Ingrese descripción" required>
+                </mat-form-field>
+
+                <!--
+                    <mat-form-field>
+                    <input matInput [(ngModel)]="data.id" type="number" placeholder="Ingrese código">
+                </mat-form-field>
+                -->
+
+                <mat-form-field>
+                    <input id="cantidad" matInput [(ngModel)]="data.cantidad" type="number" placeholder="Ingrese cantidad" min="1" required>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput [(ngModel)]="data.id" type="number" placeholder="Ingrese código">
-                </mat-form-field>
-
-                <mat-form-field >
-                    <input matInput [(ngModel)]="data.cantidad" type="number" placeholder="Ingrese cantidad" required>
-                </mat-form-field>
-                
-             
-
-                 <mat-form-field>
-                    <input matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio">
+                    <input id="precio" matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio" min="0" required>
                 </mat-form-field>
             </div>
         </div>
     </div>
     <div mat-dialog-actions>
         <button mat-button (click)="cancelar()">Cancelar</button>
-        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
+        <button id="submititem" mat-button [mat-dialog-close]="data" [disabled]="(!data.precio || !data.cantidad || !data.descrip) || this.recivedName.nombreItem===''" cdkFocusInitial>Confirmar</button>
     </div>
 </div>

@@ -1,0 +1,15 @@
+<div class="basic-container">
+
+    <!--<label matInput placeholder="Name" [(ngModel)]="data.log_name">-->
+
+    <h5>Tabla modificada: {{data.log_name }}</h5>
+    <h5>Datos del ususario:</h5>
+    <h5>{{ data.properties.user.name }} {{ data.properties.user.lastname }} | Rol: {{ data.properties.user.rol }} | Unidad: {{ data.properties.user.unidaddegasto }} | Facultad:{{data.properties.user.facultad}} | Celular:{{data.properties.user.cellphone}}
+        </h5>
+    <h5>Dato nuevos:</h5>
+    <pre>{{ data.properties.nuevo | json }} </pre>
+    <h5>Dato antiguos:</h5>
+    <pre>{{ data.properties.anterior | json }} </pre>
+
+    <button mat-button (click)="closeDialog()">Cerrar</button>
+</div>

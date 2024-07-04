@@ -1,0 +1,41 @@
+h3 {
+    margin: 15px 0;
+    color: #003975;
+}
+
+.letra2 {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.letra1 {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.letra3 {
+    font-size: 13px;
+}
+
+
+/*INIT*/
+
+.sidebar {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    background: #3f51b5;
+}
+
+.sidecontent {
+    position: relative;
+    margin-left: auto;
+    width: 83%;
+    float: right;
+    height: 100vh;
+}
+
+
+/*END*/

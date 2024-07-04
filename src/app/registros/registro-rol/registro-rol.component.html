@@ -1,25 +1,54 @@
-<div class="flexbox">
-    <h1>Registrar un nuevo rol</h1>
-    <form>
-        <div class="field">
-            <mat-form-field [style.width.px]=327 appearance="outline">
-              <mat-label>Nombre del rol:</mat-label>
-              <input matInput [formControl]="nombreRol" required autofocus>
-              <mat-error *ngIf="nombreRol.invalid">{{getErrorMessage(1)}}</mat-error>          
-            </mat-form-field>
+<app-navbar>
+</app-navbar>
+<aside class="sidebar">
+    <app-accordion></app-accordion>
+</aside>
+<div class="sidecontent">
+    <br>
+    <div class="flexbox">
+        <h1 class=" fw-bold">REGISTRAR UN NUEVO ROL</h1>
+        <form>
+            <label class=" letra2"><strong class="red"> * </strong> Requeridos</label>
             <br>
-            
-            <mat-form-field [style.width.px]=327 appearance="outline">
-                <mat-label>Descripcion:</mat-label>          
-                <textarea  matInput [formControl]="descripcionRol" required></textarea>
-                <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
-            </mat-form-field>        
-        </div>    
-        
-    </form>    
-    <button type="submit" class="btn btn-primary boton" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
+            <br>
+            <div class="field">
+                <label class="form-label letra">Nombre del rol<strong class="red"> * </strong></label> <br>
+                <mat-form-field [style.width.px]=327 appearance="outline">
+                    <input type="text" id="nom-rol" matInput [formControl]="nombreRol" required autofocus>
+                    <mat-error *ngIf="nombreRol.invalid">{{getErrorMessage(1)}}</mat-error>
+                </mat-form-field>
+                <br>
 
-    
+                <label class="form-label letra ">Descripcion<strong class="red"> * </strong></label> <br>
+                <mat-form-field [style.width.px]=327 appearance="outline">
+                    <textarea id="desc-rol" matInput [formControl]="descripcionRol" required></textarea>
+                    <mat-error *ngIf="descripcionRol.invalid">{{getErrorMessage(2)}}</mat-error>
+                </mat-form-field>
+
+                <section class="example-section" [formGroup]="privilegios">
+                    <label class="form-label letra ">Privilegios<strong class="red"> * </strong></label> <br>
+                    <p>
+                        <mat-checkbox color="primary" formControlName="admin">Administrador</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox color="primary" formControlName="jefe">Jefe de unidad</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox color="primary" formControlName="cotizador">Cotizador</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox color="primary" formControlName="usuario">Usuario</mat-checkbox>
+                    </p>
+                </section>
+
+            </div>
+
+        </form>
+
+    </div>
+    <div class="text-center">
+        <button class="boton" id="submit" mat-raised-button style="background-color: #003975; color: white;" type="submit" (click)="verificarNombreUnico(nombreRol.value)">Guardar</button>
+        <button class="boton" style="background-color: #6c757d; color: white;" mat-flat-button type="button" routerLink="/tablero">Cancelar</button>
+    </div>
+
 </div>
-    
-

@@ -1,0 +1,22 @@
+<form class="row g-3 margenes" [formGroup]="miFormulario2" (ngSubmit)=" guardarAnio()">
+    <div id="imprimir3">
+        <h1 class="text-center margen2">Seleccione el año</h1>
+        <!--<div class="tabla margen" id="tablita">-->
+
+        <div class="d-flex ">
+            <div class="d-flex">
+                &nbsp;
+                <select class="select centro selectito text-center" id="anio" formControlName="anio" #anio required>
+                    <option selected="true" disabled="disabled">Selecione el año</option>
+                    <option id="aniosCargados"  *ngFor="let deta of detalle" value={{deta.gestion}}>{{deta.gestion}}</option>
+                </select> &nbsp;
+            </div>
+
+            <div class="d-flex dere">
+                <button id="GenerarPDFEmp" (click)="guardarAnio()" [ngClass]="{disabled: !miFormulario2.valid}" class="btn-primary">Aceptar</button> &nbsp;
+            </div>
+            <p></p>
+            <button id="Cancelar" (click)="cancelar()" class="btn-secondary">Cancelar</button>
+        </div>
+    </div>
+</form>

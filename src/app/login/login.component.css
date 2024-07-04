@@ -1,54 +1,125 @@
-.centrar{
+.centrar {
     margin-left: auto;
     margin-right: auto;
 }
+
 .red {
     color: red;
-  }
+}
+
 .separar {
     margin-top: 100px;
-  }
-  .botonsito2 {
+}
+
+.botonsito2 {
     margin-left: auto;
     margin-right: auto;
     width: auto;
     border-radius: 5px;
-
-    font-size: 20px;
+    font-size: 18px;
     top: auto;
-    
-  }
-  .centrando{
+}
+
+.centrando {
     text-align: center;
-  }
-  .letra {
-    font-size:20px  ;
-    font-style:normal;
+}
+
+.letra {
+    font-size: 17.5px;
+    font-style: normal;
     font-weight: 100;
 }
-.titulo{
-  font-weight: 100;
+
+.titulo {
+    font-weight: 100;
 }
+
 .letra2 {
-  font-size:17px  ;
-  font-style:normal;
-  font-weight: 100;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 100;
 }
+
 .letra3 {
-  font-size:15px;
+    font-size: 15px;
 }
-.izquierda{
-  float:left
+
+.izquierda {
+    float: left
 }
+
 .mat-toolbar.mat-primary {
-  /*background: #007bff;*/
-  color: #003770  ;
+    /*background: #007bff;*/
+    color: #003770;
 }
+
 .angular-logo {
-  margin: 0 4px 3px 0;
-  height: 35px;
-  vertical-align: middle;
+    margin: 0 4px 3px 0;
+    height: 35px;
+    vertical-align: middle;
 }
+
 .fill-remaining-space {
-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary {
+    /*background: #007bff;*/
+    color: #003770;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.systemName {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+}
+
+.mat-icon {
+    margin-top: -15px;
+    color: aliceblue;
+    font-size: 40px;
+}
+
+.username {
+    color: aliceblue;
+}
+
+img {
+    margin-top: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 17%;
+    height: auto;
+}
+
+.input {
+    width: 70%;
+}
+
+.inputsito {
+    width: 350px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 17px;
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.letraI {
+    margin-left: 15%;
+    margin-right: 70%;
+    float: left;
+}
+
+.letraK {
+    margin-left: 15%;
+}
+
+.letraH {
+    margin-top: 25px;
 }
